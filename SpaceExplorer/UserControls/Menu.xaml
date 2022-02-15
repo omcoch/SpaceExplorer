@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="SpaceExplorer.UserControls.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SpaceExplorer.UserControls"
+             mc:Ignorable="d" d:DesignWidth="800" Height="115">
+    <StackPanel>
+        <Button Content="picture of the day"></Button>
+
+        <ComboBox>
+            <ComboBoxItem>Mars</ComboBoxItem>
+            <ComboBoxItem IsSelected="True">ComboBox Item #2</ComboBoxItem>
+            <ComboBoxItem>ComboBox Item #3</ComboBoxItem>
+        </ComboBox>
+        <Button Content="select planet for details"></Button>
+
+        <Button Content="Search"></Button>
+
+        <Button Content="Status"></Button>
+
+    </StackPanel>
+</UserControl>
