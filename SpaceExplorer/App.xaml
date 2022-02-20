@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:SpaceExplorer"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries> 
+                <ResourceDictionary Source="Style/MainStyle.xaml"/>
+                <!--add here more doctionaries, for buttons, text etc.-->
+                <!--Todo: StoryBoard to planets to circle them on a 3D ball -->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
