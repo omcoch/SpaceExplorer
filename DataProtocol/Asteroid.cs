@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace DataProtocol
 {
-    public class Planet
+    class Asteroid
     {
         public int Id { get; set; }
         public string Name { get; set; }
-       
-       
+        public double DiameterInKm { get; set; }
+        public bool isDangerous { get; set; }
+
+
     }
 }
