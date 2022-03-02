@@ -55,15 +55,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserControls\Footer.xaml.cs">
+    <Compile Include="APIs\NasaApi.cs" />
+    <Compile Include="Models\ImageDetailModel.cs" />
+    <Compile Include="Views\UserControls\Footer.xaml.cs">
       <DependentUpon>Footer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Menu.xaml.cs">
+    <Compile Include="Views\UserControls\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\PicOfTheDay.xaml.cs">
+    <Compile Include="Views\UserControls\PicOfTheDay.xaml.cs">
       <DependentUpon>PicOfTheDay.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewsModels\ImageDetailVM.cs" />
+    <Page Include="Assets\Style\PicOfTheDay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -76,19 +83,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Style\MainStyle.xaml">
+    <Page Include="Assets\Style\MainStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\Footer.xaml">
+    <Page Include="Views\UserControls\Footer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\Menu.xaml">
+    <Page Include="Views\UserControls\Menu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\PicOfTheDay.xaml">
+    <Page Include="Views\UserControls\PicOfTheDay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -128,6 +135,10 @@
       <Project>{11d17e3a-d189-4bef-b74e-4cd66af69e28}</Project>
       <Name>DataProtocol</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\Images\try.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

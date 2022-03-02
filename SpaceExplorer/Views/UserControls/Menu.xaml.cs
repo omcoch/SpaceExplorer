@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SpaceExplorer.UserControls
+namespace SpaceExplorer.Views.UserControls
 {
     /// <summary>
     /// Interaction logic for Menu.xaml

@@ -24,6 +24,5 @@ namespace SpaceExplorer
         {
             InitializeComponent();
         }
-
     }
 }

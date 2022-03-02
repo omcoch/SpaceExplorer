@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries> 
-                <ResourceDictionary Source="Style/MainStyle.xaml"/>
+                <ResourceDictionary Source="Assets/Style/MainStyle.xaml"/>
                 <!--add here more doctionaries, for buttons, text etc.-->
                 <!--Todo: StoryBoard to planets to circle them on a 3D ball -->
             </ResourceDictionary.MergedDictionaries>
