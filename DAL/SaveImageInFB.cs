@@ -14,6 +14,7 @@ namespace DAL
 {
      public class SaveImageInFB
     {
+        
         static IFirebaseConfig Config = new FirebaseConfig()
         {
             BasePath = "https://console.firebase.google.com/u/0/project/space-explorer-images/storage/space-explorer-images.appspot.com/files",
@@ -22,7 +23,7 @@ namespace DAL
         public static void addImage(Image image)
         {
             var client = new FirebaseClient(Config);
-            client.Set("Information/", image.Name);
+            client.Set("Information/", image.UniqueName);
         }
 
     }

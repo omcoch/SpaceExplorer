@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataProtocol
 {
-    class Asteroid
+  public  class Asteroid
     {
         public int Id { get; set; }
         public string Name { get; set; }
