@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32014.148
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "SpaceExplorer\PL.csproj", "{F1CDEC34-C6B3-428D-AEEC-7A27FD48C403}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{FB5B0585-D2BA-4E05-8944-454B73728AE0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProtocol", "DataProtocol\DataProtocol.csproj", "{11D17E3A-D189-4BEF-B74E-4CD66AF69E28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALTests", "DALTests\DALTests.csproj", "{AFB761AC-D64D-4026-8BAE-50C74DC3A0CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{11D17E3A-D189-4BEF-B74E-4CD66AF69E28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11D17E3A-D189-4BEF-B74E-4CD66AF69E28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11D17E3A-D189-4BEF-B74E-4CD66AF69E28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFB761AC-D64D-4026-8BAE-50C74DC3A0CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFB761AC-D64D-4026-8BAE-50C74DC3A0CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFB761AC-D64D-4026-8BAE-50C74DC3A0CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFB761AC-D64D-4026-8BAE-50C74DC3A0CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

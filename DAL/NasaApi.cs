@@ -30,13 +30,15 @@ namespace DAL
                 result.Title = dict["title"];
             return result;
         }
-        IEnumerable<Asteroid> asteroids(DateTime StartDate, DateTime EndDate)
+        public IEnumerable<Asteroid> asteroids(DateTime StartDate, DateTime EndDate)
         {
             TimeSpan time = StartDate - EndDate;
             if (time.TotalDays > 7)
                 throw new ArgumentException("Between the dates there must be a difference of less than or equal to seven days.");
             string url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + StartDate.ToString(dateFormat) + "&end_date=" + EndDate.ToString(dateFormat) + "&api_key=" + ApiKey;
-
+            var responseStr = MakeHttpReq.Get(url);
+            var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseStr);
+            return null;
 
         }
          
