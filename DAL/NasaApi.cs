@@ -38,8 +38,8 @@ namespace DAL
             string url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + StartDate.ToString(dateFormat) + "&end_date=" + EndDate.ToString(dateFormat) + "&api_key=" + ApiKey;
             var responseStr = MakeHttpReq.Get(url);
             var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseStr);
-            return null;
 
+            return null;
         }
          
 
