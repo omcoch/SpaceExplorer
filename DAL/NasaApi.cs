@@ -119,10 +119,7 @@ namespace DAL
             }
             
         }
-    }
-}
-            return null;
-        }
+
 
         private Dictionary<string, string> MakeDateReq(DateTime date)
         {            
