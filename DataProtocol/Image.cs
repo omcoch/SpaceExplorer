@@ -12,6 +12,7 @@ namespace DataProtocol
         string description;
         string uri;
         string title;
+
         public string UniqueName { get => name; set => name = value; }    
         public string Description { get => description; set => description = value; }
         public string Uri { get => uri; set => uri = value; }

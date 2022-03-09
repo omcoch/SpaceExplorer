@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30611.23
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "SpaceExplorer\PL.csproj", "{F1CDEC34-C6B3-428D-AEEC-7A27FD48C403}"
 EndProject
@@ -24,15 +24,12 @@ Global
 		{F1CDEC34-C6B3-428D-AEEC-7A27FD48C403}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1CDEC34-C6B3-428D-AEEC-7A27FD48C403}.Release|Any CPU.Build.0 = Release|Any CPU
 		{26C3AA00-009A-4E0C-9684-5129AAEB250D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26C3AA00-009A-4E0C-9684-5129AAEB250D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26C3AA00-009A-4E0C-9684-5129AAEB250D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26C3AA00-009A-4E0C-9684-5129AAEB250D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FB5B0585-D2BA-4E05-8944-454B73728AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB5B0585-D2BA-4E05-8944-454B73728AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB5B0585-D2BA-4E05-8944-454B73728AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB5B0585-D2BA-4E05-8944-454B73728AE0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{11D17E3A-D189-4BEF-B74E-4CD66AF69E28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{11D17E3A-D189-4BEF-B74E-4CD66AF69E28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11D17E3A-D189-4BEF-B74E-4CD66AF69E28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11D17E3A-D189-4BEF-B74E-4CD66AF69E28}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AFB761AC-D64D-4026-8BAE-50C74DC3A0CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

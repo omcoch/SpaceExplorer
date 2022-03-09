@@ -12,11 +12,11 @@ namespace SpaceExplorer.ViewsModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private ImageDetailModel Model;
+        private DailyImageModel Model;
 
         public ImageDetailVM()
         {
-            Model = new ImageDetailModel();
+            Model = new DailyImageModel();
 
         }
 

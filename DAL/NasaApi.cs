@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using DataProtocol;
 using Newtonsoft.Json;
 
@@ -15,13 +9,17 @@ namespace DAL
     {
         private string dateFormat = "yyyy-MM-dd";
         public static string ApiKey = "3c9WFghad2gXj8beUc9TtwjdjRITVH4rFPZ2F5Oe";
-        Image getDailyImage(DateTime date)
+
+        public Image GetDailyImage(DateTime date)
         {
             Image result = new Image();
-            string url = String.Format("https://api.nasa.gov/planetary/apod?api_key={0}&date={1}", ApiKey, date.ToString(dateFormat));
-            var responseStr = MakeHttpReq.Get(url);           
+            var dict = MakeDateReq(date);
+            if (dict.ContainsKey("code")) // an error because time differences with the United States
+            {
+                date = date.AddDays(-1);
+                dict = MakeDateReq(date);
+            }
             result.UniqueName = "NasaDailyImageFor" + date.ToString(dateFormat);
-            var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseStr);
             if(dict.ContainsKey("url"))
                result.Uri = dict["url"];
             if (dict.ContainsKey("explanation"))
@@ -40,6 +38,13 @@ namespace DAL
             var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseStr);
 
             return null;
+        }
+
+        private Dictionary<string, string> MakeDateReq(DateTime date)
+        {            
+            string url = String.Format("https://api.nasa.gov/planetary/apod?api_key={0}&date={1}", ApiKey, date.ToString(dateFormat));
+            var responseStr = MakeHttpReq.Get(url);
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(responseStr);
         }
          
 

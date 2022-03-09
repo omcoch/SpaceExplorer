@@ -14,7 +14,7 @@
     </UserControl.Resources>
 
     <Grid>
-        <TextBlock Text="{Binding ImageTitle}"/>
+        <TextBlock Name="ImageTitle" Text="{Binding ImageTitle}"/>
         <Image Source="{Binding ImageUri}" Style="{StaticResource PicOfTheDay}" />
         <TextBlock Text="{Binding ImageDescription}">
             <TextBlock.Effect>

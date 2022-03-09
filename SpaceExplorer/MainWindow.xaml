@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SpaceExplorer"
         xmlns:uc = "clr-namespace:SpaceExplorer.Views.UserControls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow">
     <StackPanel>
         
         <uc:Menu></uc:Menu>
