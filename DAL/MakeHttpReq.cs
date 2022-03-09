@@ -9,6 +9,7 @@ namespace DAL
         public static string Get(string uri)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             // todo: sometimes the line below throw error 400 from server, so need to check the value before
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
@@ -16,8 +17,7 @@ namespace DAL
             using (StreamReader reader = new StreamReader(stream))
             {
                 return reader.ReadToEnd();
-            }
-
+            }                   
         }
         public static string Post(string uri, string data, string contentType, string method = "POST")
         {
