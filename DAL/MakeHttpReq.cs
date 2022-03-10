@@ -12,12 +12,19 @@ namespace DAL
 
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             // todo: sometimes the line below throw error 400 from server, so need to check the value before
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
+            try
             {
-                return reader.ReadToEnd();
-            }                   
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return reader.ReadToEnd();
+                }
+            }
+            catch (System.Exception)
+            {
+                return null;
+            }                 
         }
         public static string Post(string uri, string data, string contentType, string method = "POST")
         {

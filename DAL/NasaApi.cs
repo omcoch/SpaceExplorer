@@ -14,11 +14,7 @@ namespace DAL
         {
             Image result = new Image();
             var dict = MakeDateReq(date);
-            if (dict.ContainsKey("code")) // an error because time differences with the United States
-            {
-                date = date.AddDays(-1);
-                dict = MakeDateReq(date);
-            }
+            
             result.UniqueName = "NasaDailyImageFor" + date.ToString(dateFormat);
             if(dict.ContainsKey("url"))
                result.Uri = dict["url"];
@@ -125,6 +121,11 @@ namespace DAL
         {            
             string url = String.Format("https://api.nasa.gov/planetary/apod?api_key={0}&date={1}", ApiKey, date.ToString(dateFormat));
             var responseStr = MakeHttpReq.Get(url);
+            while (responseStr == null) // an error because time differences with the United States
+            {
+                date = date.AddDays(-1);
+                responseStr = MakeHttpReq.Get(String.Format("https://api.nasa.gov/planetary/apod?api_key={0}&date={1}", ApiKey, date.ToString(dateFormat)));
+            }
             return JsonConvert.DeserializeObject<Dictionary<string, string>>(responseStr);
         }
          
