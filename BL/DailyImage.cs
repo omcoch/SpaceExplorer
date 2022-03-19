@@ -6,11 +6,11 @@ using System.Text;
 
 namespace BL
 {
-    public class PicOfTheDay
+    public class DailyImage
     {
         private ImageDetial DAL;
 
-        public PicOfTheDay()
+        public DailyImage()
         {
             DAL = new ImageDetial();
         }
@@ -28,7 +28,7 @@ namespace BL
         {
             return new List<DataProtocol.Image>()
             {
-                new DataProtocol.Image() {Title = "תמונת ברירת מחדל", Description="זוהי תמונת ברירת מחדל", Uri=""}
+                new DataProtocol.Image() {Title = "No Image", Description="This is default image", Uri=""}
             };
 
         }

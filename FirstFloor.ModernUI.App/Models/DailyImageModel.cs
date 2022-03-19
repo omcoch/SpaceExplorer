@@ -10,7 +10,7 @@ namespace SpaceExplorer.Models
 {
     public class DailyImageModel
     {
-        private PicOfTheDay BL;
+        private DailyImage BL;
 
         public string ImageUri { get; set; }
         public string ImageDescription { get; set; }
@@ -18,7 +18,7 @@ namespace SpaceExplorer.Models
 
         public DailyImageModel()
         {
-            BL = new PicOfTheDay();
+            BL = new DailyImage();
             GetDailyImage();
         }
 

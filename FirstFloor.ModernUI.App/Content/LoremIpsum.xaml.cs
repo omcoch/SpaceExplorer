@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BL;
 
 namespace FirstFloor.ModernUI.App.Content
 {
@@ -20,6 +21,7 @@ namespace FirstFloor.ModernUI.App.Content
     /// </summary>
     public partial class LoremIpsum : UserControl
     {
+
         public LoremIpsum()
         {
             InitializeComponent();

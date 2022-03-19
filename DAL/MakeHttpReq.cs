@@ -11,7 +11,6 @@ namespace DAL
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
 
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
-            // todo: sometimes the line below throw error 400 from server, so need to check the value before
             try
             {
                 using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
