@@ -5,14 +5,14 @@ using Newtonsoft.Json;
 
 namespace DAL
 {
-    public class NasaApi
+    public static class NasaApi
     {
-        private string dateFormat = "yyyy-MM-dd";
+        private static string dateFormat = "yyyy-MM-dd";
         public static string ApiKey = "3c9WFghad2gXj8beUc9TtwjdjRITVH4rFPZ2F5Oe";
 
-        public Image GetDailyImage(DateTime date)
+        public static Media GetDailyImage(DateTime date)
         {
-            Image result = new Image();
+            Media result = new Media();
             var dict = MakeDateReq(date);
             
             result.UniqueName = "NasaDailyImageFor" + date.ToString(dateFormat);
@@ -24,7 +24,7 @@ namespace DAL
                 result.Title = dict["title"];
             return result;
         }
-        public IEnumerable<Asteroid> asteroids(DateTime StartDate, DateTime EndDate)
+        public static IEnumerable<Asteroid> asteroids(DateTime StartDate, DateTime EndDate)
         {
             List<Asteroid> result = new List<Asteroid>();
             TimeSpan time = StartDate - EndDate;
@@ -56,7 +56,7 @@ namespace DAL
             }
             return result;
         }
-        public IEnumerable<Asteroid> asteroidsFortoday(bool isDangerous=false)
+        public static IEnumerable<Asteroid> asteroidsFortoday(bool isDangerous=false,double DiameterInKm=0)
         {
             List<Asteroid> result = new List<Asteroid>();
             Asteroid asteroid = new Asteroid();
@@ -86,9 +86,10 @@ namespace DAL
                     }
                 }
             }
+            result.RemoveAll(x => x.DiameterInKm < DiameterInKm);
             return result;
         }
-        public IEnumerable<AsteroidCloseApproach> closeApproaches(int AsteriodId)
+        public static IEnumerable<AsteroidCloseApproach> closeApproaches(int AsteriodId)
         {
             try
             {
@@ -115,9 +116,64 @@ namespace DAL
             }
             
         }
+        public static NasaLinksForObject imageVideoSearchById(string nasaID = "")
+        {
+            try
+            {
+                NasaLinksForObject linkObject = new NasaLinksForObject();
+                string basicUri = "https://images-api.nasa.gov/";
+                var responseStr = "";
+                if (nasaID.Length != 0)
+                {
+                    responseStr = MakeHttpReq.Get(basicUri + String.Format("asset/{0}", nasaID));
+                    var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseStr);                  
+                    linkObject.objectNasaId = nasaID;
+                    List<string> links = new List<string>();
+                    foreach (var item in (dict["collection"] as Newtonsoft.Json.Linq.JObject)["items"].Children())
+                    {
+                        links.Add((string)item["href"]);
+                    }
+                    linkObject.links = links;
+                }
+                return linkObject;
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
+        public static IEnumerable<Media> imageVideoSearch(string WhatToSearch="")
+        {
+            try
+            {
+                List<Media> result = new List<Media>();
+                string basicUri = "https://images-api.nasa.gov/";
+                var responseStr = "";
+                if (WhatToSearch.Length != 0 )
+                {
+                    responseStr = MakeHttpReq.Get(basicUri + String.Format("search?q={0}", WhatToSearch));
+                    var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseStr);
+                    Media media;
+                    foreach (var item in (dict["collection"] as Newtonsoft.Json.Linq.JObject)["items"].Children())
+                    {
+                        media = new Media();
+                        media.UniqueName = (string)item["data"].First["title"];
+                        media.Description = (string)item["data"].First["description"];
+                        media.Title = media.UniqueName;
+                        media.Uri = (string)item["links"].First.First;
+                        result.Add(media);
+                    }
+                }
+                return result;
+            }
+            catch (Exception)
+            {
 
-        private Dictionary<string, string> MakeDateReq(DateTime date)
+                throw;
+            }
+        }
+        private static Dictionary<string, string> MakeDateReq(DateTime date)
         {            
             string url = String.Format("https://api.nasa.gov/planetary/apod?api_key={0}&date={1}", ApiKey, date.ToString(dateFormat));
             var responseStr = MakeHttpReq.Get(url);

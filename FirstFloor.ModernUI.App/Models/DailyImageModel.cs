@@ -24,7 +24,7 @@ namespace SpaceExplorer.Models
 
         private void GetDailyImage()
         {
-            List<Image> ImageDetails = BL.GetDailyImage();
+            List<Media> ImageDetails = BL.GetDailyImage();
             ImageTitle = ImageDetails[0].Title;
             ImageDescription = ImageDetails[0].Description;
             ImageUri = ImageDetails[0].Uri;

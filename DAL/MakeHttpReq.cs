@@ -6,10 +6,11 @@ namespace DAL
 {
     public static class MakeHttpReq
     {
-        public static string Get(string uri)
+        public static string Get(string uri,string auth="")
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-
+            if(auth != "") 
+                request.Headers.Add("Authorization", auth);
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             try
             {

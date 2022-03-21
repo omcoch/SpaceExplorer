@@ -44,7 +44,9 @@
   <ItemGroup>
     <Compile Include="Asteroid.cs" />
     <Compile Include="AsteroidCloseApproach.cs" />
-    <Compile Include="Image.cs" />
+    <Compile Include="ImaggaTagsForImage.cs" />
+    <Compile Include="Media.cs" />
+    <Compile Include="NasaLinksForObject.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolarPlanet.cs" />
