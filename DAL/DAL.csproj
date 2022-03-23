@@ -63,7 +63,7 @@
     <Compile Include="NasaExceptions.cs" />
     <Compile Include="PlanetReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveImageInFB.cs" />
+    <Compile Include="FirebaseHandle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
