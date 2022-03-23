@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataProtocol
 {
-    public class Image
-    {
+    public class Media
+    {   
         string name;
         string description;
         string uri;

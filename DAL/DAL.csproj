@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ImageDetial.cs" />
+    <Compile Include="ImaggaApi.cs" />
     <Compile Include="MakeHttpReq.cs" />
     <Compile Include="NasaApi.cs" />
     <Compile Include="NasaExceptions.cs" />

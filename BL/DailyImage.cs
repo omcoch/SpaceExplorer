@@ -15,20 +15,20 @@ namespace BL
             DAL = new ImageDetial();
         }
 
-        public List<DataProtocol.Image> GetDailyImage()
+        public List<DataProtocol.Media> GetDailyImage()
         {
-            List<DataProtocol.Image> ImageDetails = DAL.GetDailyImage();
+            List<DataProtocol.Media> ImageDetails = DAL.GetDailyImage();
             if (ImageDetails != null && ImageDetails.Count > 0)
                 return ImageDetails;
             else
                 return SetDefaults();
         }
 
-        private List<DataProtocol.Image> SetDefaults()
+        private List<DataProtocol.Media> SetDefaults()
         {
-            return new List<DataProtocol.Image>()
+            return new List<DataProtocol.Media>()
             {
-                new DataProtocol.Image() {Title = "No Image", Description="This is default image", Uri=""}
+                new DataProtocol.Media() {Title = "No Image", Description="This is default image", Uri=""}
             };
 
         }

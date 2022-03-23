@@ -9,13 +9,13 @@ namespace DAL
 {
     public class ImageDetial
     {
-        private NasaApi nasaApi = new NasaApi();
+        
 
-        public List<Image> GetDailyImage()
+        public List<Media> GetDailyImage()
         {
-            List<Image> Result = new List<Image>();
+            List<Media> Result = new List<Media>();
 
-            Result.Add(nasaApi.GetDailyImage(DateTime.Today));
+            Result.Add(NasaApi.GetDailyImage(DateTime.Today));
 
             return Result;
         }
