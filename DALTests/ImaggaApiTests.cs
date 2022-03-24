@@ -25,9 +25,12 @@ namespace DAL.Tests
         [TestMethod()]
         public void getImageCategoriesTest()
         {
-            foreach (var item in ImaggaApi.getImageCategories(NasaApi.GetDailyImage(DateTime.Parse("23/03/2022")).Uri).Tags)
-            {
-                Console.WriteLine("uri:" + ImaggaApi.getImageCategories(NasaApi.GetDailyImage(DateTime.Parse("23/03/2022")).Uri));
+            var image = NasaApi.GetDailyImage(DateTime.Parse("23/03/2022"));
+            Console.WriteLine("Image uri: " + image.Uri);
+            Console.WriteLine("Image description: " + image.Description);
+            Console.WriteLine("What does the imagga think there is:");
+            foreach (var item in ImaggaApi.getImageCategories(image.Uri).Tags)
+            {               
                 Console.WriteLine(item);
             } 
         }
