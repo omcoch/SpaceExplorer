@@ -62,6 +62,8 @@
   <ItemGroup>
     <Compile Include="ImageDetial.cs" />
     <Compile Include="ImaggaApi.cs" />
+    <Compile Include="LocalDB\Media.cs" />
+    <Compile Include="LocalDB\MediaDBContext.cs" />
     <Compile Include="MakeHttpReq.cs" />
     <Compile Include="NasaApi.cs" />
     <Compile Include="NasaExceptions.cs" />
