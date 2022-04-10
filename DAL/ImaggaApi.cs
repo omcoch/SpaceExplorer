@@ -20,6 +20,7 @@ namespace DAL
             else ResultLanguage = "en";
             requeststr+= "image_url=" + ImageUri;
             string responseStr= MakeHttpReq.Get(requeststr, apiKey);
+            if(responseStr==null)  return tags;          
             var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseStr);
             foreach (var item in (dict["result"] as Newtonsoft.Json.Linq.JObject)["tags"])
             {

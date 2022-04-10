@@ -48,6 +48,7 @@
     <PackageReference Include="FirebaseStorage.net">
       <Version>1.0.3</Version>
     </PackageReference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
@@ -62,18 +63,18 @@
   <ItemGroup>
     <Compile Include="ImageDetial.cs" />
     <Compile Include="ImaggaApi.cs" />
-    <Compile Include="LocalDB\Media.cs" />
-    <Compile Include="LocalDB\MediaDBContext.cs" />
     <Compile Include="MakeHttpReq.cs" />
     <Compile Include="NasaApi.cs" />
     <Compile Include="NasaExceptions.cs" />
     <Compile Include="PlanetReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FirebaseHandle.cs" />
+    <Compile Include="SaveImageInFB.cs" />
+    <Compile Include="TleApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="planets.csv" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

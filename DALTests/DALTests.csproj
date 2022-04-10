@@ -58,11 +58,14 @@
   <ItemGroup>
     <Compile Include="ImaggaApiTests.cs" />
     <Compile Include="NasaApiTests.cs" />
+    <Compile Include="PlanetReaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveImageInFBTests.cs" />
+    <Compile Include="TleApiTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="planets.csv" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
