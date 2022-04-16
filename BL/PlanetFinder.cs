@@ -17,6 +17,11 @@ namespace BL
             DAL = new PlanetReader();
         }
 
+        public List<Planet> GetPlanets()
+        {
+            return DAL.GetPlanets();
+        }
+
         public List<Planet> GetPlanet(int id)
         {
             // Todo: the BL should create an empty list and send it to the DAL, and the DAL would fill it out and send it back to the BL

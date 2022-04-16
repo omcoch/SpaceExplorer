@@ -12,6 +12,7 @@ namespace DAL
     {
         //public static string apiKey = "acc_25f4ba630907383"+ ':'+"e0721045a68349a43d7f61aab8a12488";
         public static string apiKey = "Basic YWNjXzI1ZjRiYTYzMDkwNzM4MzplMDcyMTA0NWE2ODM0OWE0M2Q3ZjYxYWFiOGExMjQ4OA==";
+
         public static ImaggaTagsForImage getImageTags(string ImageUri,string ResultLanguage="")
         {
             ImaggaTagsForImage tags = new ImaggaTagsForImage();
@@ -28,6 +29,7 @@ namespace DAL
             tags.imageUri = ImageUri;
             return tags;
         }
+
         public static ImaggaTagsForImage getImageCategories(string ImageUri, string ResultLanguage = "")
         {
             ImaggaTagsForImage tags = new ImaggaTagsForImage();

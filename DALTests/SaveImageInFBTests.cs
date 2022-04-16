@@ -14,7 +14,7 @@ namespace DAL.Tests
         [TestMethod()]
         public void stamTest()
         {
-            var t = FirebaseHandle.UploadImage();
+            var t = new FirebaseHandle().UploadImage("","");
         }
     }
 }

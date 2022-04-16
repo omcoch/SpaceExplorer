@@ -24,6 +24,7 @@ namespace DAL
                 result.Title = dict["title"];
             return result;
         }
+
         public static IEnumerable<Asteroid> asteroids(DateTime StartDate, DateTime EndDate)
         {
             List<Asteroid> result = new List<Asteroid>();
@@ -56,6 +57,7 @@ namespace DAL
             }
             return result;
         }
+
         public static IEnumerable<Asteroid> asteroidsFortoday(bool isDangerous=false,double DiameterInKm=0)
         {
             List<Asteroid> result = new List<Asteroid>();
@@ -89,6 +91,7 @@ namespace DAL
             result.RemoveAll(x => x.DiameterInKm < DiameterInKm);
             return result;
         }
+
         public static IEnumerable<AsteroidCloseApproach> closeApproaches(int AsteriodId)
         {
             try

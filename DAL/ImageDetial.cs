@@ -42,9 +42,10 @@ namespace DAL
             using (var ctx = new LocalDB.MediaDBContext())
             {
                 return (from m in ctx.Objects
-                       where m.MediaID == id
-                       select m)
+                        where m.MediaID == id
+                        select m)
                        .Count() > 0;
             }
         }
     }
+}
