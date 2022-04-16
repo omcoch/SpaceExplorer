@@ -1,20 +1,28 @@
 ﻿using DataProtocol;
 using System;
 using System.Collections.Generic;
-
+using Microsoft.VisualBasic.FileIO;
 namespace DAL
 {
     public class PlanetReader
     {
         public List<Planet> Planets { get; set; }
-
-        public List<Planet> GetPlanets()
+        public List<Planet> readCsvFile()
         {
-            return new List<Planet>
+            string [] currentLine;
+            Planet planet = new Planet();
+            var Reader = new TextFieldParser(@"..\..\planets.csv");
+            Reader.TextFieldType = Microsoft.VisualBasic.FileIO.FieldType.Delimited;
+            Reader.SetDelimiters(",");
+            while(!Reader.EndOfData)
             {
-                new Planet() {Id=1, Name="PlanetA"},
-                new Planet() {Id=2, Name="PlanetB"}
-            };
+                currentLine = Reader.ReadFields();
+                foreach (var item in currentLine)
+                {
+                    
+                }
+            }
+            return null;
         }
     }
 }
