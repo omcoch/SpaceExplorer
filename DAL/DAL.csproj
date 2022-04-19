@@ -48,6 +48,9 @@
     <PackageReference Include="FirebaseStorage.net">
       <Version>1.0.3</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,14 +64,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FirebaseHandle.cs" />
     <Compile Include="ImageDetial.cs" />
     <Compile Include="ImaggaApi.cs" />
+    <Compile Include="LocalDB\Media.cs" />
+    <Compile Include="LocalDB\MediaDBContext.cs" />
+    <Compile Include="LocalDB\SearchHistory.cs" />
+    <Compile Include="LocalDB\SearchHistoryDBContext.cs" />
+    <Compile Include="LocalDB\SpaceExplorerDBContext.cs" />
     <Compile Include="MakeHttpReq.cs" />
     <Compile Include="NasaApi.cs" />
     <Compile Include="NasaExceptions.cs" />
     <Compile Include="PlanetReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveImageInFB.cs" />
+    <Compile Include="SearchHistory.cs" />
     <Compile Include="TleApi.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +86,6 @@
     <None Include="planets.csv" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>

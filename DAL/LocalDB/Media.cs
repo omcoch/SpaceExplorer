@@ -23,7 +23,6 @@ namespace DAL.LocalDB
         [Required]
         public string Uri { get; set; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        public DateTime Day { get; set; }
     }
 }

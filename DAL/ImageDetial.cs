@@ -10,39 +10,31 @@ namespace DAL
     public class ImageDetial
     {
 
+        
 
-        public List<Media> GetDailyImage()
+        public Media GetImageOnline()
         {
-            Media Result;
-
-            Result = GetImageFromUri();
-
-            return new List<Media> { Result };
+            return  NasaApi.GetDailyImage(DateTime.Today);
         }
 
-        private Media GetImageFromUri()
-        {
-            return NasaApi.GetDailyImage(DateTime.Today);
-        }
-
-        private LocalDB.Media GetImageFromDB(int id)
+        public LocalDB.Media GetImageFromDB(DateTime today)
         {
             using (var ctx = new LocalDB.MediaDBContext())
             {
                 var query = from m in ctx.Objects
-                            where m.MediaID == id
+                            where m.Day == today
                             select m;
 
                 return query.First();
             }
         }
 
-        private bool ExistsInDB(int id)
+        public bool ExistsInDB(DateTime today)
         {
             using (var ctx = new LocalDB.MediaDBContext())
             {
                 return (from m in ctx.Objects
-                        where m.MediaID == id
+                        where m.Day == today
                         select m)
                        .Count() > 0;
             }

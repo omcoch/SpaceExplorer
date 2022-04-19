@@ -18,9 +18,9 @@ namespace PL.Views
     /// <summary>
     /// Interaction logic for SearchUserControl.xaml
     /// </summary>
-    public partial class SearchUserControl : UserControl
+    public partial class SearchResultUserControl : UserControl
     {
-        public SearchUserControl()
+        public SearchResultUserControl()
         {
             InitializeComponent();
         }

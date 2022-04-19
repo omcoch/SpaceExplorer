@@ -12,6 +12,9 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Dark.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <FontFamily x:Key="Starjedi">pack://application:,,,/Assets/Fonts/Starjedi/Starjedi.ttf#Star Jedi</FontFamily>
+            <FontFamily x:Key="Starjhol">pack://application:,,,/Assets/Fonts/Starjedi/Starjhol.ttf#Star Jedi Hollow</FontFamily>
+
  
         </ResourceDictionary>
     </Application.Resources>

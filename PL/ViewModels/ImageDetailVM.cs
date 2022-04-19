@@ -12,11 +12,11 @@ namespace PL.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private DailyImageModel Model;
+        private ImageDetailModel Model;
 
         public ImageDetailVM()
         {
-            Model = new DailyImageModel();
+            Model = new ImageDetailModel();
 
         }
 

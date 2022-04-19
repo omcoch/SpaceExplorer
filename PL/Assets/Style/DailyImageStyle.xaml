@@ -5,7 +5,6 @@
     
     <Style TargetType="TextBlock" x:Key="DescriptionStyle">
         <Setter Property="FontSize" Value="17" />
-        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="Padding" Value="30,20,30,20"/>
         <Style.Triggers>
@@ -14,5 +13,19 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <Style TargetType="TextBlock" x:Key="TitleStyle">
+        <Setter Property="FontSize" Value="30" />
+        <Setter Property="Foreground" Value="{StaticResource MahApps.Brushes.Accent}"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontFamily" Value="{StaticResource Starjhol}"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Padding" Value="20,0,0,0"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#CCFFFFFF" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 </ResourceDictionary>

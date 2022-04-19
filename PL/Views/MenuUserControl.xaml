@@ -15,7 +15,7 @@
             <local:DailyImageUserControl/>
         </TabItem>
         <TabItem Header="&lt;Search&gt;">
-            <local:DailyImageUserControl/>
+            <local:SearchUserControl/>
         </TabItem>
         <TabItem Header="&lt;Asteroids&gt;">
             <local:AsteroidsUserControl/>

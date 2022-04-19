@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace MaterialDesignPL.Commands
+namespace PL.Commands
 {
     /// <summary>
     /// The base implementation of a command.

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PL.Models
 {
-    public class DailyImageModel
+    public class ImageDetailModel
     {
         private DailyImage BL;
 
@@ -16,12 +16,14 @@ namespace PL.Models
         public string ImageDescription { get; set; }
         public string ImageTitle { get; set; }
 
-        public DailyImageModel()
+        public ImageDetailModel()
         {
             BL = new DailyImage();
+
             GetDailyImage();
         }
 
+        // todo: maybe turn this function into a command
         private void GetDailyImage()
         {
             List<Media> ImageDetails = BL.GetDailyImage();

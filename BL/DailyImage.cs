@@ -1,4 +1,5 @@
 ﻿using DAL;
+using DataProtocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,20 +16,28 @@ namespace BL
             DAL = new ImageDetial();
         }
 
-        public List<DataProtocol.Media> GetDailyImage()
+        public List<Media> GetDailyImage()
         {
-            List<DataProtocol.Media> ImageDetails = DAL.GetDailyImage();
-            if (ImageDetails != null && ImageDetails.Count > 0)
-                return ImageDetails;
-            else
+            var ImageDetails = DAL.GetImageFromDB(DateTime.Today);
+            if (ImageDetails != null)
+                return new List<Media> { ImageDetails };
+
+            ImageDetails = DAL.GetImageOnline();
+
+            if (ImageDetails != null)
+            {
+
+                return new List<Media> { ImageDetails };
+            }
+            else // for some other problems, Lo Aleinu
                 return SetDefaults();
         }
 
-        private List<DataProtocol.Media> SetDefaults()
+        private List<Media> SetDefaults()
         {
-            return new List<DataProtocol.Media>()
+            return new List<Media>()
             {
-                new DataProtocol.Media() {Title = "No Image", Description="This is default image", Uri=""}
+                new Media() {Title = "No Image", Description="This is default image", Uri=""}
             };
 
         }

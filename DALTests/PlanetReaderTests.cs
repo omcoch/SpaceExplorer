@@ -15,7 +15,7 @@ namespace DAL.Tests
         public void readCsvFileTest()
         {
             PlanetReader reader = new PlanetReader();
-            reader.readCsvFile();
+            reader.ReadCsvFile();
         }
     }
 }

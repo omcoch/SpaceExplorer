@@ -61,9 +61,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\SearchCommand.cs" />
+    <Compile Include="Converters\DivideByTwo.cs" />
+    <Compile Include="Models\SearchModel.cs" />
     <Compile Include="ViewModels\PlanetsVM.cs" />
     <Compile Include="ViewModels\ImageDetailVM.cs" />
     <Compile Include="ViewModels\NotEmptyValidationRule.cs" />
+    <Compile Include="ViewModels\SearchVM.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\AsteroidsUserControl.xaml.cs">
       <DependentUpon>AsteroidsUserControl.xaml</DependentUpon>
@@ -74,19 +78,26 @@
     <Compile Include="Views\MenuUserControl.xaml.cs">
       <DependentUpon>MenuUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PlanetBodyUserControl.xaml.cs">
+    <Compile Include="Views\Planets\PlanetBodyUserControl.xaml.cs">
       <DependentUpon>PlanetBodyUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PlanetsUserControl.xaml.cs">
+    <Compile Include="Views\Planets\PlanetsUserControl.xaml.cs">
       <DependentUpon>PlanetsUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchUserControl.xaml.cs">
+    <Compile Include="Views\Search\SearchResultUserControl.xaml.cs">
+      <DependentUpon>SearchResultUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\SearchUserControl.xaml.cs">
       <DependentUpon>SearchUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WelcomeUserControl.xaml.cs">
       <DependentUpon>WelcomeUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Assets\Style\DailyImageStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Style\SearchStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,15 +132,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PlanetBodyUserControl.xaml">
+    <Page Include="Views\Planets\PlanetBodyUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PlanetsUserControl.xaml">
+    <Page Include="Views\Planets\PlanetsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SearchUserControl.xaml">
+    <Page Include="Views\Search\SearchResultUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Search\SearchUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,7 +154,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\DailyImageModel.cs" />
+    <Compile Include="Models\ImageDetailModel.cs" />
     <Compile Include="Models\PlanetModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -158,6 +173,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Assets\Fonts\starjedi\Star Jedi font guide Word97.doc" />
+    <Resource Include="Assets\Fonts\starjedi\Starjedi.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Fonts\starjedi\Starjhol.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -189,6 +211,14 @@
     <PackageReference Include="MaterialDesignThemes.MahApps">
       <Version>0.2.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\stars_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Fonts\starjedi\sample003.jpg" />
+    <Resource Include="Assets\Fonts\starjedi\starjedi hollow sample.jpg" />
+    <Resource Include="Assets\Fonts\starjedi\starjedi sample.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

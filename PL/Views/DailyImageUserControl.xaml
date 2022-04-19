@@ -23,10 +23,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0">
-            <mah:MetroHeader mah:HeaderedControlHelper.HeaderFontWeight="Bold" mah:HeaderedControlHelper.HeaderForeground="{DynamicResource MahApps.Brushes.Accent}"
-                            Header="{Binding ImageTitle}" mah:HeaderedControlHelper.HeaderFontSize="34">
-            </mah:MetroHeader>
+        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+            <TextBlock Text="{Binding ImageTitle}" Style="{StaticResource TitleStyle}"/>
             <TextBlock Text="{Binding ImageDescription}" Style="{StaticResource DescriptionStyle}"/>
         </StackPanel>
         <Image Source="{Binding ImageUri}" Name="TheImage" Grid.Column="1"/>

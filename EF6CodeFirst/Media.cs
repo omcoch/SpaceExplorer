@@ -23,7 +23,6 @@ namespace EF6CodeFirst
         [Required]
         public string Uri { get; set; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        public DateTime Day { get; set; }
     }
 }

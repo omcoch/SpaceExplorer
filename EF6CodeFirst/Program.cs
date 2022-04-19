@@ -11,6 +11,7 @@ namespace EF6CodeFirst
         static void Main(string[] args)
         {
             AddMedia(description: "example", name: "Ex", title: "title", uri: "http:dvfdfde");
+            AddSearchHistory("England");
 
         }
 
@@ -56,7 +57,8 @@ namespace EF6CodeFirst
                     Name = name,
                     Title = title,
                     Description = description,
-                    Uri = uri
+                    Uri = uri,
+                    Day = DateTime.Now,
                 };
 
                 ctx.Objects.Add(media);
@@ -78,6 +80,26 @@ namespace EF6CodeFirst
                 };
 
                 ctx.Objects.Add(media);
+                ctx.SaveChanges();
+
+            }
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////// SearchHistory //////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////
+
+
+        static void AddSearchHistory(string term)
+        {
+            using (var ctx = new SearchHistoryDBContext())
+            {
+                var s = new SearchHistory()
+                {
+                    SearchTerm = term
+                };
+
+                ctx.Objects.Add(s);
                 ctx.SaveChanges();
 
             }
