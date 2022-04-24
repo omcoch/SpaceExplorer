@@ -22,7 +22,7 @@ namespace PL.Models
 
         public SearchModel()
         {
-            SuggestInput = new 
+            
         }
 
         public List<string> Suggestions { get; set; }
