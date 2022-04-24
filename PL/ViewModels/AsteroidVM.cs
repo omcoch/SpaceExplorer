@@ -59,8 +59,8 @@ namespace PL.ViewModels
             }
         }
 
-        public List<Asteroid> SearchResult { get; set; }
-        public List<AsteroidCloseApproach> AsteroidCloseApproach { get; set; }
+        public List<Asteroid> AsteroidResult { get; set; }
+        public List<AsteroidCloseApproach> AsteroidCloseApproachResult { get; set; }
 
     }
 }

@@ -28,8 +28,8 @@ namespace DAL.Tests
                 Console.WriteLine("astroid is dangerous: {0}", item.isDangerous);
                 Console.WriteLine("Close Approach");
                 Console.WriteLine("date: {0}", item.closeApproach.Date);
-                Console.WriteLine("velocity: {0}", item.closeApproach.velocityKmPerH);
-                Console.WriteLine("miss distance: {0}", item.closeApproach.missDistanceKm);
+                Console.WriteLine("velocity: {0}", item.closeApproach.VelocityKmPerH);
+                Console.WriteLine("miss distance: {0}", item.closeApproach.MissDistanceKm);
             }
         }
 
@@ -40,8 +40,8 @@ namespace DAL.Tests
             {
                 Console.WriteLine("Close Approach");
                 Console.WriteLine("date: {0}", item.Date);
-                Console.WriteLine("velocity: {0}", item.velocityKmPerH);
-                Console.WriteLine("miss distance: {0}", item.missDistanceKm);
+                Console.WriteLine("velocity: {0}", item.VelocityKmPerH);
+                Console.WriteLine("miss distance: {0}", item.MissDistanceKm);
             }
         }
 
@@ -58,8 +58,8 @@ namespace DAL.Tests
                 Console.WriteLine("astroid is dangerous: {0}", item.isDangerous);
                 Console.WriteLine("Close Approach");
                 Console.WriteLine("date: {0}", item.closeApproach.Date);
-                Console.WriteLine("velocity: {0}", item.closeApproach.velocityKmPerH);
-                Console.WriteLine("miss distance: {0}", item.closeApproach.missDistanceKm);
+                Console.WriteLine("velocity: {0}", item.closeApproach.VelocityKmPerH);
+                Console.WriteLine("miss distance: {0}", item.closeApproach.MissDistanceKm);
             }
         }
 

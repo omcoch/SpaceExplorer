@@ -52,8 +52,8 @@ namespace DAL
                         asteroid.isDangerous = (bool)jToken["is_potentially_hazardous_asteroid"];
                         asteroid.closeApproach = new AsteroidCloseApproach();
                         asteroid.closeApproach.Date = DateTime.Parse((string)jToken["close_approach_data"].First["close_approach_date"]);
-                        asteroid.closeApproach.missDistanceKm= (double)jToken["close_approach_data"].First["miss_distance"]["kilometers"];
-                        asteroid.closeApproach.velocityKmPerH = (double)jToken["close_approach_data"].First["relative_velocity"]["kilometers_per_hour"];
+                        asteroid.closeApproach.MissDistanceKm= (double)jToken["close_approach_data"].First["miss_distance"]["kilometers"];
+                        asteroid.closeApproach.VelocityKmPerH = (double)jToken["close_approach_data"].First["relative_velocity"]["kilometers_per_hour"];
                         result.Add(asteroid);
                     }                 
                 }
@@ -84,8 +84,8 @@ namespace DAL
                             asteroid.isDangerous = (bool)jToken["is_potentially_hazardous_asteroid"];
                             asteroid.closeApproach = new AsteroidCloseApproach();
                             asteroid.closeApproach.Date = DateTime.Parse((string)jToken["close_approach_data"].First["close_approach_date"]);
-                            asteroid.closeApproach.missDistanceKm = (double)jToken["close_approach_data"].First["miss_distance"]["kilometers"];
-                            asteroid.closeApproach.velocityKmPerH = (double)jToken["close_approach_data"].First["relative_velocity"]["kilometers_per_hour"];
+                            asteroid.closeApproach.MissDistanceKm = (double)jToken["close_approach_data"].First["miss_distance"]["kilometers"];
+                            asteroid.closeApproach.VelocityKmPerH = (double)jToken["close_approach_data"].First["relative_velocity"]["kilometers_per_hour"];
                             result.Add(asteroid);
                         }
                     }
@@ -109,8 +109,8 @@ namespace DAL
                 {
                     closeApproach = new AsteroidCloseApproach();
                     closeApproach.Date = DateTime.Parse((string)item["close_approach_date_full"]);
-                    closeApproach.velocityKmPerH = (double)item["relative_velocity"]["kilometers_per_hour"];
-                    closeApproach.missDistanceKm = (double)item["miss_distance"]["kilometers"];
+                    closeApproach.VelocityKmPerH = (double)item["relative_velocity"]["kilometers_per_hour"];
+                    closeApproach.MissDistanceKm = (double)item["miss_distance"]["kilometers"];
                     result.Add(closeApproach);
                 }
                 return result;

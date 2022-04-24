@@ -8,6 +8,9 @@ namespace PL.Models
 {
     public class SearchModel
     {
+        public event Action SuggestInput;
+        public string SearchInput;
+
         private List<string> suggestions = new List<string>()
         {
             "A1",
@@ -19,7 +22,7 @@ namespace PL.Models
 
         public SearchModel()
         {
-
+            SuggestInput = new 
         }
 
         public List<string> Suggestions { get; set; }

@@ -20,10 +20,10 @@
         <mah:MetroHeader mah:HeaderedControlHelper.HeaderFontWeight="Bold" mah:HeaderedControlHelper.HeaderForeground="{DynamicResource MahApps.Brushes.Accent}"
                             Header="Search For Something" mah:HeaderedControlHelper.HeaderFontSize="34"/>
 
-        <TextBox x:Name="SuggestionBox"/>
+        <TextBox x:Name="SearchInput"/>
         <Button Content="Find Now!" Width="{Binding ActualWidth, Converter={StaticResource MathDivideConverter}, ConverterParameter=4, ElementName=stackPanel, Mode=OneWay}"/>
 
-        <local:SearchResultUserControl/>
+        <local:SearchResultUserControl DataContext="{Binding}"/>
 
     </StackPanel>
 

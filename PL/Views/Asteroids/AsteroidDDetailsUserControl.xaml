@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:PL.Views" xmlns:viewmodels="clr-namespace:PL.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AsteroidVM}"
              mc:Ignorable="d" >
     <Grid>
-        <ListBox ItemsSource="{Binding SearchResult, Mode=OneWay}" d:ItemsSource="{d:SampleData ItemCount=5}" >
+        <ListBox ItemsSource="{Binding AsteroidResult, UpdateSourceTrigger=PropertyChanged}" d:ItemsSource="{d:SampleData ItemCount=5}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Background="Azure">
+                    <Grid Background="Purple">
                         <Label Content="Name: "/>
                         <TextBlock Text="{Binding Name}"/>
 
@@ -18,6 +18,23 @@
 
                         <Label Content="IsDangerous ? "/>
                         <TextBlock Text="{Binding IsDangerous}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox ItemsSource="{Binding AsteroidCloseApproachResult, Mode=OneWay}" d:ItemsSource="{d:SampleData ItemCount=5}" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Background="WhiteSmoke">
+                        <Label Content="Date: "/>
+                        <TextBlock Text="{Binding Date}"/>
+
+                        <Label Content="Distance (km): "/>
+                        <TextBlock Text="{Binding MissDistanceKm}"/>
+
+                        <Label Content="Velocity (km): "/>
+                        <TextBlock Text="{Binding VelocityKmPerH}"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

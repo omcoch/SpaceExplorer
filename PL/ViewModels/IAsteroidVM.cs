@@ -9,7 +9,7 @@ namespace PL.ViewModels
         bool IsDangerous { get; set; }
         string Name { get; set; }
 
-        List<Asteroid> SearchResult { get; set; }
-        List<AsteroidCloseApproach> AsteroidCloseApproach { get; set; }
+        List<Asteroid> AsteroidResult { get; set; }
+        List<AsteroidCloseApproach> AsteroidCloseApproachResult { get; set; }
     }
 }

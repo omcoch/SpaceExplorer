@@ -69,6 +69,7 @@
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="ViewModels\AsteroidVM.cs" />
     <Compile Include="ViewModels\IAsteroidVM.cs" />
+    <Compile Include="ViewModels\SearchVM.cs" />
     <Compile Include="ViewModels\PlanetsVM.cs" />
     <Compile Include="ViewModels\ImageDetailVM.cs" />
     <Compile Include="ViewModels\NotEmptyValidationRule.cs" />

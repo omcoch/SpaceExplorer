@@ -23,9 +23,9 @@ namespace PL.Commands
         protected override void OnExecute(object parameter)
         {
             if (AsteroidVM.Name != null)
-                AsteroidVM.AsteroidCloseApproach = new BL.AsteroidFinder().GetAsteroidByName(AsteroidVM.Name).ToList();
+                AsteroidVM.AsteroidCloseApproachResult = new BL.AsteroidFinder().GetAsteroidByName(AsteroidVM.Name).ToList();
             else if (AsteroidVM.Diameter != null)
-                AsteroidVM.SearchResult = (List<DataProtocol.Asteroid>)new BL.AsteroidFinder().GetAsteroidForToday(AsteroidVM.IsDangerous, double.Parse(AsteroidVM.Diameter));
+                AsteroidVM.AsteroidResult = (List<DataProtocol.Asteroid>)new BL.AsteroidFinder().GetAsteroidForToday(AsteroidVM.IsDangerous, double.Parse(AsteroidVM.Diameter));
         }
 
         public override bool CanExecute(object parameter)

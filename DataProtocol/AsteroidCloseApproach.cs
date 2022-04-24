@@ -9,8 +9,8 @@ namespace DataProtocol
     public class AsteroidCloseApproach
     {
         public DateTime Date { get; set; }
-        public double missDistanceKm { get; set; }
-        public double velocityKmPerH { get; set; }
+        public double MissDistanceKm { get; set; }
+        public double VelocityKmPerH { get; set; }
 
     }
 }
