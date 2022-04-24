@@ -61,6 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\SearchCommand.cs" />
+    <Compile Include="Commands\SuggestionEventCommand.cs" />
     <Compile Include="Commands\SuggestionCommand.cs" />
     <Compile Include="Commands\FiletrAsteroidCommand.cs" />
     <Compile Include="Domain\IsNumberValidationRule.cs" />
@@ -68,7 +70,9 @@
     <Compile Include="Models\AsteroidModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="ViewModels\AsteroidVM.cs" />
+    <Compile Include="ViewModels\ISearchVM.cs" />
     <Compile Include="ViewModels\IAsteroidVM.cs" />
+    <Compile Include="ViewModels\ISuggestionVM.cs" />
     <Compile Include="ViewModels\SearchVM.cs" />
     <Compile Include="ViewModels\PlanetsVM.cs" />
     <Compile Include="ViewModels\ImageDetailVM.cs" />

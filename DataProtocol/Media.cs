@@ -23,6 +23,12 @@ namespace DataProtocol
         [Required]
         public string Uri { get; set; }
 
+        
+        public int NasaId { get; set; }
+        public string AddressInFireBase { get; set; }
+        public List<string> Tags { get; set; }
+
+
         // TimeStamp as byte[] columns cannot be used in comparisons... 
         public DateTime Day { get; set; }
     }

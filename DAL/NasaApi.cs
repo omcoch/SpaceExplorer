@@ -169,15 +169,15 @@ namespace DAL
                         media.Description = (string)item["data"].First["description"];
                         media.Title = media.Name;
                         media.Uri = (string)item["links"].First.First;
+                        media.NasaId = (int)item["nasa_id"];
                         result.Add(media);
                     }
                 }
                 return result;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                throw e;
             }
         }
 

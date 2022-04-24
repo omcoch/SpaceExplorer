@@ -3,10 +3,78 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PL.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+             xmlns:local="clr-namespace:PL.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" >
+    <ListBox ItemsSource="{Binding}">
+        <ListBox.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml"/>
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml"/>
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Card.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </ListBox.Resources>
+        
+
+        <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel/>
+            </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <materialDesign:Card Width="220">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Image
+                        Source="{Binding Uri}"
+                        Height="140"
+                        Stretch="UniformToFill"/>
+                        <Button
+                        Grid.Row="0"
+                        Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0 0 16 -20">
+                            <materialDesign:PackIcon Kind="ShareVariant" />
+                        </Button>
+                        <StackPanel Grid.Row="1" Margin="8 24 8 4" >
+                            <TextBlock
+                            Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                            Margin="0"
+                            Text="{Binding Title}"/>
+                            <Viewbox
+                            Margin="0 4 0 8"
+                            Height="16"
+                            HorizontalAlignment="Left">
+                                <materialDesign:RatingBar
+                                Value="3"
+                                Orientation="Horizontal"
+                                Foreground="Gold"
+                                Margin="0" />
+                            </Viewbox>
+                            <TextBlock
+                            Style="{StaticResource MaterialDesignBody1TextBlock}"
+                            TextWrapping="Wrap"
+                            VerticalAlignment="Center"
+                            Text="{Binding Description}"/>
+                        </StackPanel>
+                        <TextBlock
+                        Grid.Row="2"
+                        Margin="8 4 8 4"
+                        Style="{StaticResource MaterialDesignBody2TextBlock}"
+                        Text="{Binding Name}"/>
+                    </Grid>
+                </materialDesign:Card>
+
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
 </UserControl>

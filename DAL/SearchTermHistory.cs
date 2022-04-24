@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class SearchHistory
+    public class SearchTermHistory
     {
 
-        private int AddTerm(string term)
+        public int AddTerm(string term)
         {
             using (var ctx = new SpaceExplorerDBContext())
             {
@@ -19,13 +19,25 @@ namespace DAL
                     SearchTerm = term
                 };
 
-                ctx.SearchHistoryObjects.Add(item);
+                if (!TermInDB(term))
+                    ctx.SearchHistoryObjects.Add(item);
                 return ctx.SaveChanges();
 
             }
         }
 
-        private bool TermInDB(string term)
+        public List<string> GetAllSuggestions()
+        {
+            using (var ctx = new SpaceExplorerDBContext())
+            {
+                return (from m in ctx.SearchHistoryObjects
+                        select m.SearchTerm)
+                        .ToList();
+            }
+        }
+
+
+        public bool TermInDB(string term)
         {
             using (var ctx = new SpaceExplorerDBContext())
             {

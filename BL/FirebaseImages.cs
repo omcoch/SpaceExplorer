@@ -19,7 +19,6 @@ namespace BL
         {
             try
             {
-                // path: @"C:\Users\nocks\Desktop\pic.jpg"
                 var task = DAL.UploadImage(path, name);
                 return task;
             }

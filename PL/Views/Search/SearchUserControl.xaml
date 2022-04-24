@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PL.Views"
-             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:viewmodels="clr-namespace:PL.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SearchVM}"
              mc:Ignorable="d">
 
     <UserControl.Resources>
@@ -20,10 +20,20 @@
         <mah:MetroHeader mah:HeaderedControlHelper.HeaderFontWeight="Bold" mah:HeaderedControlHelper.HeaderForeground="{DynamicResource MahApps.Brushes.Accent}"
                             Header="Search For Something" mah:HeaderedControlHelper.HeaderFontSize="34"/>
 
-        <TextBox x:Name="SearchInput"/>
-        <Button Content="Find Now!" Width="{Binding ActualWidth, Converter={StaticResource MathDivideConverter}, ConverterParameter=4, ElementName=stackPanel, Mode=OneWay}"/>
+        <TextBox Name="SearchTextBox">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="KeyUp">
+                    <i:InvokeCommandAction Command="{Binding SuggestionCommand}" CommandParameter="{Binding ElementName=SearchTextBox, Mode=OneWay}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <TextBox.InputBindings>
+                <KeyBinding Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=SearchTextBox, Path=Text, UpdateSourceTrigger=PropertyChanged}" Key="Enter" />
+            </TextBox.InputBindings>
+        </TextBox>
+        <Button Content="Find Now!" Width="{Binding ActualWidth, Converter={StaticResource MathDivideConverter}, ConverterParameter=4, ElementName=stackPanel, Mode=OneWay}"
+                Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=SearchTextBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
 
-        <local:SearchResultUserControl DataContext="{Binding}"/>
+        <local:SearchResultUserControl DataContext="{Binding SearchResult}"/>
 
     </StackPanel>
 

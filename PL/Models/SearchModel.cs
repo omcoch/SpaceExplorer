@@ -3,28 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BL;
 
 namespace PL.Models
 {
     public class SearchModel
     {
-        public event Action SuggestInput;
-        public string SearchInput;
 
-        private List<string> suggestions = new List<string>()
-        {
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A556"
-        };
+        private Suggestions SuggestionsBL;
+
+        public List<string> Suggestions { get; set; }
+        public string SearchInput { get; set; }
 
         public SearchModel()
         {
-            
+            SuggestionsBL = new Suggestions();
         }
 
-        public List<string> Suggestions { get; set; }
+        public List<string> GetSuggestions()
+        {
+            if (Suggestions == null)
+                Suggestions = SuggestionsBL.GetSuggestions();
+
+            return Suggestions;
+        }
+
+        public void AddSuggestion(string newData)
+        {
+            // put in DB
+            SuggestionsBL.AddSuggestion(newData);
+
+            // assign into the local variable
+            Suggestions.Add(newData);
+        }
     }
 }

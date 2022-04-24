@@ -15,11 +15,13 @@ namespace PL.Views
     /// </summary>
     public partial class SearchUserControl : UserControl
     {
+        SearchVM CurrentVM;
 
         public SearchUserControl()
         {
             InitializeComponent();
-            //DataContext = currentVM;
+            CurrentVM = new SearchVM();
+            DataContext = CurrentVM;
         }
 
         

@@ -12,6 +12,7 @@ namespace DAL.Tests
     public class ImaggaApiTests
     {
         private NasaApi NasaApi = new NasaApi();
+        private ImaggaApi ImaggaApi = new ImaggaApi();
 
         [TestMethod()]
         public void getImageTagsTest()

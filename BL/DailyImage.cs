@@ -9,11 +9,11 @@ namespace BL
 {
     public class DailyImage
     {
-        private ImageDetial DAL;
+        private MediaDetail DAL;
 
         public DailyImage()
         {
-            DAL = new ImageDetial();
+            DAL = new MediaDetail();
         }
 
         public List<Media> GetDailyImage()
@@ -29,7 +29,7 @@ namespace BL
             {
                 // Save in db for the next time.
                 // Validation doesn't necessary because it base on data from the code itself
-                DAL.SaveImageInDB(ImageDetails);
+                DAL.SaveMediaInDB(ImageDetails);
 
                 return new List<Media> { ImageDetails };
             }

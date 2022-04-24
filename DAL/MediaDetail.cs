@@ -8,7 +8,7 @@ using DataProtocol;
 
 namespace DAL
 {
-    public class ImageDetial
+    public class MediaDetail
     {
         private NasaApi NasaApi = new NasaApi();
         
@@ -30,7 +30,19 @@ namespace DAL
             }
         }
 
-        public int SaveImageInDB(Media media)
+        public Media GetMediaDBNasa(int nasaId)
+        {
+            using (var ctx = new SpaceExplorerDBContext())
+            {
+                var query = from m in ctx.MediaObjects
+                            where m.NasaId == nasaId
+                            select m;
+
+                return query.FirstOrDefault();
+            }
+        }
+
+        public int SaveMediaInDB(Media media)
         {
             using (var ctx = new SpaceExplorerDBContext())
             {
