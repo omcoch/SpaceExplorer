@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL.LocalDB;
+using DataProtocol;
 
 namespace EF6CodeFirst
 {
@@ -17,7 +19,7 @@ namespace EF6CodeFirst
 
         static void UpdateMedia(string name, string title, string description, string uri)
         {
-            using (var ctx = new MediaDBContext())
+            using (var ctx = new SpaceExplorerDBContext())
             {
                 var media = new Media()
                 {
@@ -37,9 +39,9 @@ namespace EF6CodeFirst
 
         static Media GetMedia(int id)
         {
-            using (var ctx = new MediaDBContext())
+            using (var ctx = new SpaceExplorerDBContext())
             {
-                var query = from m in ctx.Objects
+                var query = from m in ctx.MediaObjects
                             where m.MediaID == id
                             select m;
 
@@ -50,7 +52,7 @@ namespace EF6CodeFirst
 
         static void AddMedia(string name, string title, string description, string uri)
         {
-            using (var ctx = new MediaDBContext())
+            using (var ctx = new SpaceExplorerDBContext())
             {
                 var media = new Media()
                 {
@@ -58,10 +60,10 @@ namespace EF6CodeFirst
                     Title = title,
                     Description = description,
                     Uri = uri,
-                    Day = DateTime.Now,
+                    Day = DateTime.Now
                 };
 
-                ctx.Objects.Add(media);
+                ctx.MediaObjects.Add(media);
                 ctx.SaveChanges();
 
             }
@@ -69,7 +71,7 @@ namespace EF6CodeFirst
 
         void AddMediaExample(string name, string title, string description, string uri)
         {
-            using (var ctx = new MediaDBContext())
+            using (var ctx = new SpaceExplorerDBContext())
             {
                 var media = new Media()
                 {
@@ -79,7 +81,7 @@ namespace EF6CodeFirst
                     Uri = "gs://spaceexplorer-f675f.appspot.com/DailyImage/someFile.jpg"
                 };
 
-                ctx.Objects.Add(media);
+                ctx.MediaObjects.Add(media);
                 ctx.SaveChanges();
 
             }
@@ -92,14 +94,14 @@ namespace EF6CodeFirst
 
         static void AddSearchHistory(string term)
         {
-            using (var ctx = new SearchHistoryDBContext())
+            using (var ctx = new SpaceExplorerDBContext())
             {
                 var s = new SearchHistory()
                 {
                     SearchTerm = term
                 };
 
-                ctx.Objects.Add(s);
+                ctx.SearchHistoryObjects.Add(s);
                 ctx.SaveChanges();
 
             }

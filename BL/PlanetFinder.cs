@@ -19,15 +19,15 @@ namespace BL
 
         public List<Planet> GetPlanets()
         {
-            return DAL.GetPlanets();
+            return DAL.ReadCsvPlanets();
         }
 
-        public List<Planet> GetPlanet(int id)
+        public List<Planet> GetPlanet(string name)
         {
             // Todo: the BL should create an empty list and send it to the DAL, and the DAL would fill it out and send it back to the BL
 
             return (from p in DAL.Planets
-                    where p.Id == id
+                    where p.PlanetName == name
                     select p)
                     .ToList();
         }

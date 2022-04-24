@@ -61,15 +61,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\SearchCommand.cs" />
-    <Compile Include="Converters\DivideByTwo.cs" />
+    <Compile Include="Commands\SuggestionCommand.cs" />
+    <Compile Include="Commands\FiletrAsteroidCommand.cs" />
+    <Compile Include="Domain\IsNumberValidationRule.cs" />
+    <Compile Include="Domain\NotEmptyValidationRule.cs" />
+    <Compile Include="Models\AsteroidModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
+    <Compile Include="ViewModels\AsteroidVM.cs" />
+    <Compile Include="ViewModels\IAsteroidVM.cs" />
     <Compile Include="ViewModels\PlanetsVM.cs" />
     <Compile Include="ViewModels\ImageDetailVM.cs" />
     <Compile Include="ViewModels\NotEmptyValidationRule.cs" />
-    <Compile Include="ViewModels\SearchVM.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="Views\AsteroidsUserControl.xaml.cs">
+    <Compile Include="Views\Asteroids\AsteroidDDetailsUserControl.xaml.cs">
+      <DependentUpon>AsteroidDDetailsUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Asteroids\AsteroidsUserControl.xaml.cs">
       <DependentUpon>AsteroidsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DailyImageUserControl.xaml.cs">
@@ -78,10 +85,7 @@
     <Compile Include="Views\MenuUserControl.xaml.cs">
       <DependentUpon>MenuUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Planets\PlanetBodyUserControl.xaml.cs">
-      <DependentUpon>PlanetBodyUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Planets\PlanetsUserControl.xaml.cs">
+    <Compile Include="Views\PlanetsUserControl.xaml.cs">
       <DependentUpon>PlanetsUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Search\SearchResultUserControl.xaml.cs">
@@ -93,9 +97,17 @@
     <Compile Include="Views\WelcomeUserControl.xaml.cs">
       <DependentUpon>WelcomeUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Assets\Style\AsteroidsStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Assets\Style\DailyImageStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\Style\PlanetsStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Assets\Style\SearchStyle.xaml">
       <SubType>Designer</SubType>
@@ -111,16 +123,17 @@
     </Compile>
     <Compile Include="Commands\ChangeContentCommand.cs" />
     <Compile Include="Commands\CommandBase.cs" />
-    <Compile Include="Converters\BrushRoundConverter.cs" />
-    <Compile Include="Converters\BrushToHexConverter.cs" />
-    <Compile Include="Converters\ColorToBrushConverter.cs" />
     <Compile Include="Converters\MultiValueEqualityConverter.cs" />
     <Compile Include="Converters\StringJoinConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\AsteroidsUserControl.xaml">
+    <Page Include="Views\Asteroids\AsteroidDDetailsUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Asteroids\AsteroidsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -132,11 +145,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Planets\PlanetBodyUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Planets\PlanetsUserControl.xaml">
+    <Page Include="Views\PlanetsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -210,6 +219,9 @@
     </PackageReference>
     <PackageReference Include="MaterialDesignThemes.MahApps">
       <Version>0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="ShowMeTheXAML.MSBuild">
+      <Version>2.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

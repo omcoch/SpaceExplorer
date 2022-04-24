@@ -13,6 +13,8 @@ namespace DAL.Tests
     [TestClass()]
     public class NasaApiTests
     {
+        private NasaApi NasaApi = new NasaApi();
+
         [TestMethod()]
         public void asteroidsTest()
         {
@@ -69,7 +71,7 @@ namespace DAL.Tests
             foreach (var item in images)
             {
                 Console.WriteLine("image number {0}:", i++);
-                Console.WriteLine("image title: " + item.UniqueName);
+                Console.WriteLine("image title: " + item.Name);
                 Console.WriteLine("image Discription: " + item.Description);
                 Console.WriteLine("image uri: " + item.Uri);
             }

@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="PL.Views.AsteroidsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:PL.Views" 
+             xmlns:domain="clr-namespace:PL.Domain" 
+             xmlns:viewmodels="clr-namespace:PL.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AsteroidVM}"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.RadioButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+
+                <ResourceDictionary Source="/Assets/Style/AsteroidsStyle.xaml"/>                
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <TextBox
+                Name="NameTextBox"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                materialDesign:HintAssist.Hint="Name or Id">
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding Path=SuggestionCommand, UpdateSourceTrigger=PropertyChanged}" CommandParameter="{Binding Text, ElementName=NameTextBox}" Key="Tab"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <TextBox
+                Name="DiameterTextBox"
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                materialDesign:HintAssist.Hint="Diameter in km">
+                <TextBox.Text>
+                    <Binding Path="Diameter" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <domain:IsNumberValidationRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            
+            <CheckBox
+                Name="IsDangerousCheckBox"
+                Content="Is dangerous"
+                />
+
+            <Button
+                Style="{StaticResource MaterialDesignFloatingActionButton}"
+                materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                Content="{materialDesign:PackIcon Kind=Search}"
+                Command="{Binding SearchCommand}"/>
+
+        </StackPanel>
+        
+        <local:AsteroidDDetailsUserControl Grid.Column="1" DataContext="{Binding}"/>
+        
+    </Grid>
+</UserControl>

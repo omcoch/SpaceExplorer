@@ -16,15 +16,13 @@ namespace PL.Models
         }
 
 
-        // We don't want let the user the ability to change this static list of data
+        // We don't want let the user the ability to change this list of data
         public List<Planet> GetPlanets()
         {
             if (planets != null)
                 return planets;
 
             planets = BL.GetPlanets();
-            if (planets == null)
-                return new List<Planet> { };
             return planets;
         }
     }

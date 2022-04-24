@@ -60,11 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
-    <Compile Include="Media.cs" />
-    <Compile Include="MediaDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchHistory.cs" />
-    <Compile Include="SearchHistoryDBContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EntityFramework">
@@ -82,6 +78,16 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{fb5b0585-d2ba-4e05-8944-454b73728ae0}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataProtocol\DataProtocol.csproj">
+      <Project>{11d17e3a-d189-4bef-b74e-4cd66af69e28}</Project>
+      <Name>DataProtocol</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

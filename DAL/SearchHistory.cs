@@ -12,14 +12,14 @@ namespace DAL
 
         private int AddTerm(string term)
         {
-            using (var ctx = new SearchHistoryDBContext())
+            using (var ctx = new SpaceExplorerDBContext())
             {
-                var item = new LocalDB.SearchHistory()
+                var item = new DataProtocol.SearchHistory()
                 {
                     SearchTerm = term
                 };
 
-                ctx.Objects.Add(item);
+                ctx.SearchHistoryObjects.Add(item);
                 return ctx.SaveChanges();
 
             }
@@ -27,9 +27,9 @@ namespace DAL
 
         private bool TermInDB(string term)
         {
-            using (var ctx = new SearchHistoryDBContext())
+            using (var ctx = new SpaceExplorerDBContext())
             {
-                return (from m in ctx.Objects
+                return (from m in ctx.SearchHistoryObjects
                         where m.SearchTerm == term
                         select m)
                        .Count() > 0;

@@ -18,27 +18,30 @@ namespace BL
 
         public List<Media> GetDailyImage()
         {
-            var ImageDetails = DAL.GetImageFromDB(DateTime.Today);
+            Media ImageDetails;
+
+            ImageDetails = DAL.GetImageFromDB(DateTime.Today);
             if (ImageDetails != null)
                 return new List<Media> { ImageDetails };
 
             ImageDetails = DAL.GetImageOnline();
-
             if (ImageDetails != null)
             {
+                // Save in db for the next time.
+                // Validation doesn't necessary because it base on data from the code itself
+                DAL.SaveImageInDB(ImageDetails);
 
                 return new List<Media> { ImageDetails };
             }
-            else // for some other problems, Lo Aleinu
-                return SetDefaults();
+
+            else 
+                // for some other problems, Lo Aleinu
+                return new List<Media> { SetDefaults() };
         }
 
-        private List<Media> SetDefaults()
+        private Media SetDefaults()
         {
-            return new List<Media>()
-            {
-                new Media() {Title = "No Image", Description="This is default image", Uri=""}
-            };
+            return new Media() { Title = "No Image", Description = "This is default image", Uri = "" };
 
         }
     }

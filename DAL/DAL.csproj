@@ -38,6 +38,9 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="CsvHelper">
+      <Version>27.2.1</Version>
+    </PackageReference>
     <PackageReference Include="EntityFramework">
       <Version>6.4.4</Version>
     </PackageReference>
@@ -64,13 +67,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsteroidHandler.cs" />
     <Compile Include="FirebaseHandle.cs" />
     <Compile Include="ImageDetial.cs" />
     <Compile Include="ImaggaApi.cs" />
-    <Compile Include="LocalDB\Media.cs" />
-    <Compile Include="LocalDB\MediaDBContext.cs" />
-    <Compile Include="LocalDB\SearchHistory.cs" />
-    <Compile Include="LocalDB\SearchHistoryDBContext.cs" />
     <Compile Include="LocalDB\SpaceExplorerDBContext.cs" />
     <Compile Include="MakeHttpReq.cs" />
     <Compile Include="NasaApi.cs" />
@@ -83,7 +83,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="planets.csv" />
+    <None Include="LocalDB\planets.csv" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

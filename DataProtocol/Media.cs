@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,15 +9,21 @@ using System.Threading.Tasks;
 namespace DataProtocol
 {
     public class Media
-    {   
-        string name;
-        string description;
-        string uri;
-        string title;
+    {
+        public int MediaID { get; set; }
 
-        public string UniqueName { get => name; set => name = value; }    
-        public string Description { get => description; set => description = value; }
-        public string Uri { get => uri; set => uri = value; }
-        public string Title { get => title; set => title = value; }
+        [MaxLength(50)]
+        [Required]
+        public string Name { get; set; }  
+        
+        public string Description { get; set; }
+
+        public string Title { get; set; }
+
+        [Required]
+        public string Uri { get; set; }
+
+        // TimeStamp as byte[] columns cannot be used in comparisons... 
+        public DateTime Day { get; set; }
     }
 }

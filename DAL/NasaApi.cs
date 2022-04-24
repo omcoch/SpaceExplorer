@@ -5,34 +5,37 @@ using Newtonsoft.Json;
 
 namespace DAL
 {
-    public static class NasaApi
+    public class NasaApi
     {
-        private static string dateFormat = "yyyy-MM-dd";
-        public static string ApiKey = "3c9WFghad2gXj8beUc9TtwjdjRITVH4rFPZ2F5Oe";
+        private string DateFormat = "yyyy-MM-dd";
+        public string ApiKey = "3c9WFghad2gXj8beUc9TtwjdjRITVH4rFPZ2F5Oe";
 
-        public static Media GetDailyImage(DateTime date)
+
+        public Media GetDailyImage(DateTime date)
         {
             Media result = new Media();
             var dict = MakeDateReq(date);
             
-            result.UniqueName = "NasaDailyImageFor" + date.ToString(dateFormat);
+            result.Name = "NasaDailyImageFor" + date.ToString(DateFormat);
             if(dict.ContainsKey("url"))
                result.Uri = dict["url"];
             if (dict.ContainsKey("explanation"))
                 result.Description = dict["explanation"];
             if (dict.ContainsKey("title"))
                 result.Title = dict["title"];
+            if (dict.ContainsKey("date"))
+                result.Day = DateTime.Parse(dict["date"]);
             return result;
         }
 
-        public static IEnumerable<Asteroid> asteroids(DateTime StartDate, DateTime EndDate)
+        public IEnumerable<Asteroid> asteroids(DateTime StartDate, DateTime EndDate)
         {
             List<Asteroid> result = new List<Asteroid>();
             TimeSpan time = StartDate - EndDate;
             Asteroid asteroid = new Asteroid();
             if (time.TotalDays > 7)
                 throw new ArgumentException("Between the dates there must be a difference of less than or equal to seven days.");
-            string url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + StartDate.ToString(dateFormat) + "&end_date=" + EndDate.ToString(dateFormat) + "&api_key=" + ApiKey;
+            string url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + StartDate.ToString(DateFormat) + "&end_date=" + EndDate.ToString(DateFormat) + "&api_key=" + ApiKey;
             var responseStr = MakeHttpReq.Get(url);
             var dict = JsonConvert.DeserializeObject<Dictionary<string,object>>(responseStr);
             var temp = dict["near_earth_objects"];
@@ -58,7 +61,7 @@ namespace DAL
             return result;
         }
 
-        public static IEnumerable<Asteroid> asteroidsFortoday(bool isDangerous=false,double DiameterInKm=0)
+        public IEnumerable<Asteroid> asteroidsFortoday(bool IsDangerous=false, double DiameterInKm=0)
         {
             List<Asteroid> result = new List<Asteroid>();
             Asteroid asteroid = new Asteroid();
@@ -73,7 +76,7 @@ namespace DAL
                 {
                     foreach (var jToken in item)
                     {
-                        if (!isDangerous || (bool)jToken["is_potentially_hazardous_asteroid"])
+                        if (!IsDangerous || (bool)jToken["is_potentially_hazardous_asteroid"])
                         {
                             asteroid.Name = (string)jToken["name"];
                             asteroid.Id = (int)jToken["id"];
@@ -92,7 +95,7 @@ namespace DAL
             return result;
         }
 
-        public static IEnumerable<AsteroidCloseApproach> closeApproaches(int AsteriodId)
+        public IEnumerable<AsteroidCloseApproach> closeApproaches(int AsteriodId)
         {
             try
             {
@@ -119,7 +122,7 @@ namespace DAL
             }
             
         }
-        public static NasaLinksForObject imageVideoSearchById(string nasaID = "")
+        public NasaLinksForObject imageVideoSearchById(string nasaID = "")
         {
             try
             {
@@ -146,7 +149,8 @@ namespace DAL
                 throw;
             }
         }
-        public static IEnumerable<Media> imageVideoSearch(string WhatToSearch="")
+
+        public IEnumerable<Media> imageVideoSearch(string WhatToSearch="")
         {
             try
             {
@@ -161,9 +165,9 @@ namespace DAL
                     foreach (var item in (dict["collection"] as Newtonsoft.Json.Linq.JObject)["items"].Children())
                     {
                         media = new Media();
-                        media.UniqueName = (string)item["data"].First["title"];
+                        media.Name = (string)item["data"].First["title"];
                         media.Description = (string)item["data"].First["description"];
-                        media.Title = media.UniqueName;
+                        media.Title = media.Name;
                         media.Uri = (string)item["links"].First.First;
                         result.Add(media);
                     }
@@ -176,14 +180,15 @@ namespace DAL
                 throw;
             }
         }
-        private static Dictionary<string, string> MakeDateReq(DateTime date)
+
+        private Dictionary<string, string> MakeDateReq(DateTime date)
         {            
-            string url = String.Format("https://api.nasa.gov/planetary/apod?api_key={0}&date={1}", ApiKey, date.ToString(dateFormat));
+            string url = String.Format("https://api.nasa.gov/planetary/apod?api_key={0}&date={1}", ApiKey, date.ToString(DateFormat));
             var responseStr = MakeHttpReq.Get(url);
             while (responseStr == null) // an error because time differences with the United States
             {
                 date = date.AddDays(-1);
-                responseStr = MakeHttpReq.Get(String.Format("https://api.nasa.gov/planetary/apod?api_key={0}&date={1}", ApiKey, date.ToString(dateFormat)));
+                responseStr = MakeHttpReq.Get(String.Format("https://api.nasa.gov/planetary/apod?api_key={0}&date={1}", ApiKey, date.ToString(DateFormat)));
             }
             return JsonConvert.DeserializeObject<Dictionary<string, string>>(responseStr);
         }
