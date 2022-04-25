@@ -137,7 +137,11 @@ namespace DAL
                     List<string> links = new List<string>();
                     foreach (var item in (dict["collection"] as Newtonsoft.Json.Linq.JObject)["items"].Children())
                     {
-                        links.Add((string)item["href"]);
+                        try
+                        {
+                            links.Add((string)item["href"]);
+                        }
+                        catch (Exception ex) {}
                     }
                     linkObject.links = links;
                 }
@@ -186,7 +190,7 @@ namespace DAL
             catch (Exception)
             {
 
-                throw;
+                return null;
             }
         }
 
