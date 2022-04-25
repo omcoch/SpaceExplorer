@@ -23,10 +23,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" VerticalAlignment="Center">
-            <TextBlock Text="{Binding ImageTitle}" Style="{StaticResource TitleStyle}"/>
-            <TextBlock Text="{Binding ImageDescription}" Style="{StaticResource DescriptionStyle}"/>
-        </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                <TextBlock Text="{Binding ImageTitle}" Style="{StaticResource TitleStyle}"/>
+                <TextBlock Text="{Binding ImageDescription}" Style="{StaticResource DescriptionStyle}"/>
+            </StackPanel>
+        </ScrollViewer>           
         <Image Source="{Binding ImageUri}" Name="TheImage" Grid.Column="1"/>
        
     </Grid>

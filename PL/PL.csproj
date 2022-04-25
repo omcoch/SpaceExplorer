@@ -237,5 +237,11 @@
     <Resource Include="Assets\Fonts\starjedi\starjedi hollow sample.jpg" />
     <Resource Include="Assets\Fonts\starjedi\starjedi sample.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\background.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\background.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

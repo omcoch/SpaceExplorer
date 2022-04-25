@@ -29,5 +29,7 @@ namespace DataProtocol
         public string Number_Of_Moons { get; set; }
         public string Has_Ring_System { get; set; }
         public string Has_Global_Magnetic_Field { get; set; }
+
+        public string Uri { get; set; }
     }
 }
