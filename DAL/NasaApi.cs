@@ -118,7 +118,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw ex;
+                return null;
             }
             
         }
@@ -164,20 +164,29 @@ namespace DAL
                     Media media;
                     foreach (var item in (dict["collection"] as Newtonsoft.Json.Linq.JObject)["items"].Children())
                     {
-                        media = new Media();
-                        media.Name = (string)item["data"].First["title"];
-                        media.Description = (string)item["data"].First["description"];
-                        media.Title = media.Name;
-                        media.Uri = (string)item["links"].First.First;
-                        media.NasaId = (int)item["nasa_id"];
-                        result.Add(media);
+                        try
+                        {
+                            media = new Media();
+                            media.Name = (string)item["data"].First["title"];
+                            media.Description = (string)item["data"].First["description"];
+                            media.Title = media.Name;
+                            media.Uri = (string)item["links"].First.First;
+                            result.Add(media);
+                        }
+                        catch (Exception ex)
+                        {
+
+                            
+                        }
+                       
                     }
                 }
                 return result;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
+
+                throw;
             }
         }
 
