@@ -44,12 +44,12 @@ namespace DAL
 
             // cancel the upload
             // cancellation.Cancel();
-            
-            var downloadUrl = await task;   
+
+            var downloadUrl = await task;
             // todo: insert into database the image link.
         }
 
-        public  List<string> GetImages(List<string> imagesNames)
+        public List<string> GetImages(List<string> imagesNames)
         {
             List<string> result = new List<string>();
 
