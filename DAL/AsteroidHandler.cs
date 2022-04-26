@@ -11,25 +11,21 @@ namespace DAL
     {
         private NasaApi NasaApi = new NasaApi();
 
-        public IEnumerable<Asteroid> GetAsteroids(DateTime startDate, DateTime endDate)
+        public IEnumerable<Asteroid> GetAsteroids(DateTime startDate, DateTime endDate,bool IsDangerous= false, double DiameterInKm = 0)
         {
-            return NasaApi.asteroids(startDate, endDate);
+            if (IsDangerous)
+                return NasaApi.asteroids(startDate, endDate).Where(A => A.isDangerous == true && A.DiameterInKm > DiameterInKm);
+            else return NasaApi.asteroids(startDate, endDate).Where(A => A.DiameterInKm > DiameterInKm);
         }
 
-        public IEnumerable<AsteroidCloseApproach> GetAsteroidById(int id)
+        public IEnumerable<AsteroidCloseApproach> GetAsteroidById(string id)
         {
             return NasaApi.closeApproaches(id);
         }
 
-        public IEnumerable<AsteroidCloseApproach> GetAsteroidByName(string name)
+        public IEnumerable<Asteroid> GetAsteroidsForToday( bool IsDangerous = false, double DiameterInKm = 0)
         {
-            // todo: fetch data from local db?
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Asteroid> GetAsteroidForToday(bool IsDangerous, double DiameterInKm)
-        {
-            return NasaApi.asteroidsFortoday(IsDangerous,DiameterInKm);
+            return NasaApi.asteroidsFortoday(IsDangerous, DiameterInKm);
         }
 
     }

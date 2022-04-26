@@ -49,7 +49,7 @@ namespace DAL
                     foreach (var jToken in item)
                     {
                         asteroid.Name = (string)jToken["name"];
-                        asteroid.Id = (int)jToken["id"];
+                        asteroid.Id = (string)jToken["id"];
                         asteroid.DiameterInKm = ((double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_min"]+ (double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_max"])/2;
                         asteroid.isDangerous = (bool)jToken["is_potentially_hazardous_asteroid"];
                         asteroid.closeApproach = new AsteroidCloseApproach();
@@ -81,7 +81,7 @@ namespace DAL
                         if (!IsDangerous || (bool)jToken["is_potentially_hazardous_asteroid"])
                         {
                             asteroid.Name = (string)jToken["name"];
-                            asteroid.Id = (int)jToken["id"];
+                            asteroid.Id = (string)jToken["id"];
                             asteroid.DiameterInKm = ((double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_min"] + (double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_max"]) / 2;
                             asteroid.isDangerous = (bool)jToken["is_potentially_hazardous_asteroid"];
                             asteroid.closeApproach = new AsteroidCloseApproach();
@@ -97,7 +97,7 @@ namespace DAL
             return result;
         }
 
-        public IEnumerable<AsteroidCloseApproach> closeApproaches(int AsteriodId)
+        public IEnumerable<AsteroidCloseApproach> closeApproaches(string AsteriodId)
         {
             try
             {

@@ -36,7 +36,7 @@ namespace DAL.Tests
         [TestMethod()]
         public void closeApproachesTest()
         {          
-            foreach (var item in NasaApi.closeApproaches(54208622))
+            foreach (var item in NasaApi.closeApproaches("54208622"))
             {
                 Console.WriteLine("Close Approach");
                 Console.WriteLine("date: {0}", item.Date);

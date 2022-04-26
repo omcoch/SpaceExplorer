@@ -16,26 +16,49 @@ namespace BL
         {
             DAL = new AsteroidHandler();
         }
-
-        
-
+        /// <summary>
+        /// if there isn't nasa Astroid with this id returns null
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IEnumerable<AsteroidCloseApproach> GetAsteroid(string id)
         {
-            int intId;
-            if (int.TryParse((id ?? "").ToString(), out intId))
-                return DAL.GetAsteroidById(intId);
-
-            return GetAsteroidByName(id);
+            try
+            {
+                return DAL.GetAsteroidById(id);
+            }
+            catch (Exception)
+            {
+                return null;
+                
+            }
+          
         }
-
-        public IEnumerable<AsteroidCloseApproach> GetAsteroidByName(string name)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="StartDate">Should be today to get today result.</param>
+        /// <param name="EndDate">if not null Must be up to 7 days away from Start Day</param>
+        /// <param name="IsDangerous">Optional</param>
+        /// <param name="DiameterInKm">Optional</param>
+        /// <returns>
+        ///  if no exception  is thrown returns IEnumerable<Asteroid> else Null
+        /// </returns>        
+        public IEnumerable<Asteroid> GetAsteroids(DateTime StartDate, DateTime EndDate, bool IsDangerous=false, double DiameterInKm=0)
         {
-            return DAL.GetAsteroidByName(name);
-        }
-
-        public IEnumerable<Asteroid> GetAsteroidForToday(bool IsDangerous, double DiameterInKm)
-        {
-            return DAL.GetAsteroidForToday(IsDangerous, DiameterInKm);
+            if (StartDate == DateTime.Now)
+                return DAL.GetAsteroidsForToday(IsDangerous, DiameterInKm);
+            else
+            {
+                try
+                {
+                    return DAL.GetAsteroids(StartDate, EndDate, IsDangerous, DiameterInKm);
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
         }
 
     }

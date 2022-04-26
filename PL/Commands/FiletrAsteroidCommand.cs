@@ -22,10 +22,15 @@ namespace PL.Commands
 
         protected override void OnExecute(object parameter)
         {
-            if (AsteroidVM.Name != null)
-                AsteroidVM.AsteroidCloseApproachResult = new BL.AsteroidFinder().GetAsteroidByName(AsteroidVM.Name).ToList();
-            else if (AsteroidVM.Diameter != null)
-                AsteroidVM.AsteroidResult = (List<DataProtocol.Asteroid>)new BL.AsteroidFinder().GetAsteroidForToday(AsteroidVM.IsDangerous, double.Parse(AsteroidVM.Diameter));
+            /.
+            /*
+             * to Do:
+             * needs to do one of three options:
+             * Get Today Astroids: new BL.AsteroidFinder().GetAsteroids(today , null, parameter[is Dangers], parameter[diameter])
+             * Get Week  Astroids: new BL.AsteroidFinder().GetAsteroids(StartDate,EndDate, parameter[is Dangers], parameter[diameter]);
+             * Get Asrtoid data:   new BL.AsteroidFinder().GetAsteroid(parameter[id])
+             * 
+             */
         }
 
         public override bool CanExecute(object parameter)
