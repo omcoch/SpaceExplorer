@@ -12,7 +12,8 @@ namespace DataProtocol
     {
         public int MediaID { get; set; }
 
-        [MaxLength(50)]
+        public string NasaId { get; set; }
+
         [Required]
         public string Name { get; set; }  
         
@@ -22,12 +23,8 @@ namespace DataProtocol
 
         [Required]
         public string Uri { get; set; }
-
-        
-        public int NasaId { get; set; }
-        public string AddressInFireBase { get; set; }
-        public List<string> Tags { get; set; }
-
+                
+        public List<ImaggaTagsForImage> Tags { get; set; }
 
         // TimeStamp as byte[] columns cannot be used in comparisons... 
         public DateTime Day { get; set; }

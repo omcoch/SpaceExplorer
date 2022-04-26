@@ -2,6 +2,7 @@
 using DataProtocol;
 using PL.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PL.Commands
 {
@@ -28,19 +29,15 @@ namespace PL.Commands
 
             if (SearchVM.SearchResult == null)
                 SearchVM.SearchResult = new System.Collections.ObjectModel.ObservableCollection<Media>();
-
-            SearchVM.SearchResult.Clear();
+            else
+                SearchVM.SearchResult.Clear();
+            
             foreach (Media media in SearchBL.SearchByName(input))
             {
                 List<string> possibleTags = SearchBL.GetTags(media);
-                foreach (string word in media.Title.Split(' '))
-                {
-                    if (possibleTags.Contains(word))
-                    {
-                        SearchVM.SearchResult.Add(media);
-                        break;
-                    }
-                }                    
+                var tags = possibleTags.Where(pt => media.Title.Contains(pt)).ToList();
+                
+                                 
             }
 
             SearchVM.Callback(input);

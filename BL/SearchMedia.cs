@@ -31,19 +31,7 @@ namespace BL
 
         public List<string> GetTags(Media media)
         {
-            var existsMedia = MediaDetail.GetMediaDBNasa(media.NasaId);
-
-            if (existsMedia != null)
-                return existsMedia.Tags;
-
-            var tags = ImaggaApi.getImageTags(media.Uri).Tags;
-
-            // before returning the tags, save the media details in local db for later useages
-            media.Tags = tags;
-            MediaDetail.SaveMediaInDB(media);
-
-            return tags;
-
+            return new List<string>();
         }
 
     }

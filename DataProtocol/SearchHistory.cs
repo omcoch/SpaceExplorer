@@ -13,8 +13,5 @@ namespace DataProtocol
         [Key]
         [MaxLength(100)]
         public string SearchTerm { get; set; }
-
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
     }
 }

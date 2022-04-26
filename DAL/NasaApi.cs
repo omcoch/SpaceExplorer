@@ -25,6 +25,7 @@ namespace DAL
                 result.Title = dict["title"];
             if (dict.ContainsKey("date"))
                 result.Day = DateTime.Parse(dict["date"]);
+            result.NasaId = "0";
             return result;
         }
 
@@ -116,7 +117,7 @@ namespace DAL
                 return result;
 
             }
-            catch (Exception ex)
+            catch
             {
                 return null;
             }
@@ -141,7 +142,7 @@ namespace DAL
                         {
                             links.Add((string)item["href"]);
                         }
-                        catch (Exception ex) {}
+                        catch (Exception) {}
                     }
                     linkObject.links = links;
                 }
@@ -175,9 +176,11 @@ namespace DAL
                             media.Description = (string)item["data"].First["description"];
                             media.Title = media.Name;
                             media.Uri = (string)item["links"].First.First;
+                            media.NasaId = (string)item["data"].First["nasa_id"];
+                            media.Day = DateTime.Now;
                             result.Add(media);
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             

@@ -30,15 +30,11 @@ namespace DAL
             }
         }
 
-        public Media GetMediaDBNasa(int nasaId)
+        public Media GetMediaDBNasa(string uri)
         {
             using (var ctx = new SpaceExplorerDBContext())
             {
-                var query = from m in ctx.MediaObjects
-                            where m.NasaId == nasaId
-                            select m;
-
-                return query.FirstOrDefault();
+                return ctx.MediaObjects.Where(m => m.Uri == uri).FirstOrDefault();
             }
         }
 
@@ -53,7 +49,7 @@ namespace DAL
 
         public bool ExistsInDB(DateTime today)
         {
-            using (var ctx = new LocalDB.SpaceExplorerDBContext())
+            using (var ctx = new SpaceExplorerDBContext())
             {
                 return (from m in ctx.MediaObjects
                         where m.Day == today
