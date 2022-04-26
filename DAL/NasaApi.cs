@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DataProtocol;
 using Newtonsoft.Json;
 
@@ -159,40 +160,27 @@ namespace DAL
         {
             try
             {
-                List<Media> result = new List<Media>();
                 string basicUri = "https://images-api.nasa.gov/";
                 var responseStr = "";
                 if (WhatToSearch.Length != 0 )
                 {
                     responseStr = MakeHttpReq.Get(basicUri + String.Format("search?q={0}", WhatToSearch));
                     var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseStr);
-                    Media media;
-                    foreach (var item in (dict["collection"] as Newtonsoft.Json.Linq.JObject)["items"].Children())
-                    {
-                        try
-                        {
-                            media = new Media();
-                            media.Name = (string)item["data"].First["title"];
-                            media.Description = (string)item["data"].First["description"];
-                            media.Title = media.Name;
-                            media.Uri = (string)item["links"].First.First;
-                            media.NasaId = (string)item["data"].First["nasa_id"];
-                            media.Day = DateTime.Now;
-                            result.Add(media);
-                        }
-                        catch (Exception)
-                        {
-
-                            
-                        }
-                       
-                    }
+                    return (from item in (dict["collection"] as Newtonsoft.Json.Linq.JObject)["items"].Children()
+                             select new Media()
+                             {
+                                 Name = (string)item["data"].First["title"],
+                                 Title = (string)item["data"].First["title"],
+                                 Description = (string)item["data"].First["description"],
+                                 Uri = (string)item["links"].First.First,
+                                 NasaId = (string)item["data"].First["nasa_id"],
+                                 Day = DateTime.Now
+                             }).Take(10).ToList();
                 }
-                return result;
+                return Enumerable.Empty<Media>();
             }
             catch (Exception)
             {
-
                 return null;
             }
         }

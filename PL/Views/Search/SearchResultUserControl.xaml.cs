@@ -22,7 +22,13 @@ namespace PL.Views
     {
         public SearchResultUserControl()
         {
-            InitializeComponent();
+            InitializeComponent();            
+        }
+
+
+        private void ListBox_Loaded(object sender, RoutedEventArgs e)
+        {
+MessageBox.Show("");
         }
     }
 }

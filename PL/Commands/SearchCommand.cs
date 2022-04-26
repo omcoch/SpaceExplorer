@@ -3,6 +3,7 @@ using DataProtocol;
 using PL.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Documents;
 
 namespace PL.Commands
 {
@@ -32,13 +33,8 @@ namespace PL.Commands
             else
                 SearchVM.SearchResult.Clear();
             
-            foreach (Media media in SearchBL.SearchByName(input))
-            {
-                List<string> possibleTags = SearchBL.GetTags(media);
-                var tags = possibleTags.Where(pt => media.Title.Contains(pt)).ToList();
-                
-                                 
-            }
+            SearchVM.SearchResult = new System.Collections.ObjectModel.ObservableCollection<Media>() { SearchBL.SearchByName(input).First() };
+            
 
             SearchVM.Callback(input);
 

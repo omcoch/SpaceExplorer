@@ -27,7 +27,7 @@ namespace DAL
             {
                 tags.Tags.Add((string)(item as Newtonsoft.Json.Linq.JObject)["tag"][ResultLanguage]);
             }
-            tags.imageUri = ImageUri;
+            tags.ImageUri = ImageUri;
             return tags;
         }
 
@@ -44,7 +44,7 @@ namespace DAL
             {
                 tags.Tags.Add((string)(item as Newtonsoft.Json.Linq.JObject)["name"][ResultLanguage]);
             }
-            tags.imageUri = ImageUri;
+            tags.ImageUri = ImageUri;
             return tags;
         }
     }
