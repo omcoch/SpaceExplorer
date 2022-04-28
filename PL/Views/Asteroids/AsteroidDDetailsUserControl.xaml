@@ -3,27 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PL.Views" xmlns:viewmodels="clr-namespace:PL.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AsteroidVM}"
+             xmlns:local="clr-namespace:PL.Views" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" >
-    <Grid>
-        <ListBox ItemsSource="{Binding AsteroidResult, UpdateSourceTrigger=PropertyChanged}" d:ItemsSource="{d:SampleData ItemCount=5}" >
+    <StackPanel>
+        <ListBox ItemsSource="{Binding AsteroidResult, UpdateSourceTrigger=PropertyChanged}" 
+                 Style="{StaticResource MahApps.Styles.ListBox.Virtualized}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Background="Purple">
-                        <Label Content="Name: "/>
-                        <TextBlock Text="{Binding Name}"/>
-
-                        <Label Content="Diameter: "/>
-                        <TextBlock Text="{Binding Diameter}"/>
-
-                        <Label Content="IsDangerous ? "/>
-                        <TextBlock Text="{Binding IsDangerous}"/>
-                    </Grid>
+                    <GroupBox Width="300">
+                        <GroupBox.Header>
+                            <TextBlock HorizontalAlignment="Center" Text="{Binding Name}" />
+                        </GroupBox.Header>
+                        <StackPanel>
+                            <TextBlock Text="{Binding DiameterInKm}"/>
+                            <TextBlock Text="{Binding IsDangerous}"/>
+                        </StackPanel>
+                    </GroupBox>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ListBox ItemsSource="{Binding AsteroidCloseApproachResult, Mode=OneWay}" d:ItemsSource="{d:SampleData ItemCount=5}" >
+        <ListBox ItemsSource="{Binding ElementName=AsteroidResult, Path=AsteroidCloseApproachResult, Mode=OneWay}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Background="WhiteSmoke">
@@ -40,5 +41,5 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-    </Grid>
+    </StackPanel>
 </UserControl>

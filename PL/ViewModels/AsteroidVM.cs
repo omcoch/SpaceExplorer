@@ -3,6 +3,8 @@ using PL.Commands;
 using PL.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,54 +15,58 @@ namespace PL.ViewModels
 {
     public class AsteroidVM : ViewModelBase, IAsteroidVM
     {
-        private AsteroidModel Model;
-        public FiletrAsteroidCommand SearchCommand { get; set; }
+        public AsteroidModel Model;
+
+        public FiletrAsteroidCommand FiletrAsteroidCommand { get; set; }
+
         public SuggestionCommand SuggestionCommand { get; set; }
 
-        private string name;
-        private string diameter;
-        private bool isDangerous;
+        public ObservableCollection<Asteroid> AsteroidResult { get; set; }
 
+        private DateTime startDate;
+        public DateTime StartDate
+        {
+            get => Model.StartDate;
+            set
+            {
+                Model.StartDate = value;
+                SetProperty(ref startDate, value, "StartDate");
+            }
+        }
 
-        public AsteroidVM(TextBox textBoxSuggested)
+        private DateTime endDate;
+        public DateTime EndDate
+        {
+            get => Model.EndDate;
+            set
+            {
+                Model.EndDate = value;
+                SetProperty(ref endDate, value, "EndDate");
+            }
+        }
+
+        public AsteroidVM()
         {
             Model = new AsteroidModel();
-            SearchCommand = new FiletrAsteroidCommand(this);
-            SuggestionCommand = new SuggestionCommand(textBoxSuggested);
+            AsteroidResult = new ObservableCollection<Asteroid>();
+            FiletrAsteroidCommand = new FiletrAsteroidCommand(this);
+            AsteroidResult.CollectionChanged += AsteroidResult_CollectionChanged;
         }
 
-        public string Name
+        private void AsteroidResult_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            get => Model.Name;
-            set
+            if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                Model.Name = value;
-                SetProperty(ref name, value, "Name");
+                var newData = e.NewItems[0] as Asteroid;
+                if (newData != null)
+                    Model.AsteroidResult.Add(newData);
             }
         }
 
-        public string Diameter
+        public void GetAsteroids(Asteroid asteroid)
         {
-            get => Model.Diameter;
-            set
-            {
-                Model.Diameter = value;
-                SetProperty(ref diameter, value, "Diameter");
-            }
+            Model.GetAsteroids(StartDate, EndDate, asteroid.IsDangerous, asteroid.DiameterInKm).ToList()
+                .ForEach(a => AsteroidResult.Add(a));
         }
-
-        public bool IsDangerous
-        {
-            get => Model.IsDangerous;
-            set
-            {
-                Model.IsDangerous = !Model.IsDangerous;
-                SetProperty(ref isDangerous, value, "IsDangerous");
-            }
-        }
-
-        public List<Asteroid> AsteroidResult { get; set; }
-        public List<AsteroidCloseApproach> AsteroidCloseApproachResult { get; set; }
-
     }
 }

@@ -11,7 +11,7 @@ namespace DataProtocol
         public string Id { get; set; }
         public string Name { get; set; }
         public double DiameterInKm { get; set; }
-        public bool isDangerous { get; set; }
+        public bool IsDangerous { get; set; }
         public AsteroidCloseApproach closeApproach { get; set; }
 
     }

@@ -25,7 +25,7 @@ namespace DAL.Tests
                 Console.WriteLine("astroid name: {0}", item.Name);
                 Console.WriteLine("astroid id: {0}", item.Id);
                 Console.WriteLine("astroid size: {0}", item.DiameterInKm);
-                Console.WriteLine("astroid is dangerous: {0}", item.isDangerous);
+                Console.WriteLine("astroid is dangerous: {0}", item.IsDangerous);
                 Console.WriteLine("Close Approach");
                 Console.WriteLine("date: {0}", item.closeApproach.Date);
                 Console.WriteLine("velocity: {0}", item.closeApproach.VelocityKmPerH);
@@ -55,7 +55,7 @@ namespace DAL.Tests
                 Console.WriteLine("astroid name: {0}", item.Name);
                 Console.WriteLine("astroid id: {0}", item.Id);
                 Console.WriteLine("astroid size: {0}", item.DiameterInKm);
-                Console.WriteLine("astroid is dangerous: {0}", item.isDangerous);
+                Console.WriteLine("astroid is dangerous: {0}", item.IsDangerous);
                 Console.WriteLine("Close Approach");
                 Console.WriteLine("date: {0}", item.closeApproach.Date);
                 Console.WriteLine("velocity: {0}", item.closeApproach.VelocityKmPerH);

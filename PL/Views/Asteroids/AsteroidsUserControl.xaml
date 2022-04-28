@@ -6,6 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:PL.Views" 
              xmlns:domain="clr-namespace:PL.Domain" 
+             xmlns:conv="clr-namespace:PL.Converters" 
              xmlns:viewmodels="clr-namespace:PL.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AsteroidVM}"
              mc:Ignorable="d">
 
@@ -20,9 +21,9 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
-
                 <ResourceDictionary Source="/Assets/Style/AsteroidsStyle.xaml"/>                
             </ResourceDictionary.MergedDictionaries>
+                <conv:MultiValueToAsteroidConverter x:Key="MultiValueToAsteroidConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     
@@ -33,15 +34,16 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
+            <DatePicker Name="StartDatePicker" DisplayDate="{Binding StartDate}"/>
+            <DatePicker Name="EndDatePicker" DisplayDate="{Binding EndDate}"/>
+
             <TextBox
                 Name="NameTextBox"
+                Text="{Binding Name}"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 materialDesign:HintAssist.Hint="Name or Id">
-                <TextBox.InputBindings>
-                    <KeyBinding Command="{Binding Path=SuggestionCommand, UpdateSourceTrigger=PropertyChanged}" CommandParameter="{Binding Text, ElementName=NameTextBox}" Key="Tab"/>
-                </TextBox.InputBindings>
             </TextBox>
-
+            
             <TextBox
                 Name="DiameterTextBox"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
@@ -58,17 +60,27 @@
             <CheckBox
                 Name="IsDangerousCheckBox"
                 Content="Is dangerous"
+                IsChecked="{Binding IsDangerous}"
                 />
 
             <Button
                 Style="{StaticResource MaterialDesignFloatingActionButton}"
                 materialDesign:ButtonProgressAssist.IsIndeterminate="True"
                 Content="{materialDesign:PackIcon Kind=Search}"
-                Command="{Binding SearchCommand}"/>
+                Command="{Binding FiletrAsteroidCommand}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource MultiValueToAsteroidConverter}">
+                        <Binding Path="Text" ElementName="NameTextBox"/>
+                        <Binding Path="Text" ElementName="DiameterTextBox"/>
+                        <Binding Path="IsChecked" ElementName="IsDangerousCheckBox"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
 
         </StackPanel>
-        
-        <local:AsteroidDDetailsUserControl Grid.Column="1" DataContext="{Binding}"/>
-        
+
+
+        <local:AsteroidDDetailsUserControl Grid.Column="1"/>
+
     </Grid>
 </UserControl>

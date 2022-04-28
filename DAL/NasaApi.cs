@@ -51,7 +51,7 @@ namespace DAL
                         asteroid.Name = (string)jToken["name"];
                         asteroid.Id = (string)jToken["id"];
                         asteroid.DiameterInKm = ((double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_min"]+ (double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_max"])/2;
-                        asteroid.isDangerous = (bool)jToken["is_potentially_hazardous_asteroid"];
+                        asteroid.IsDangerous = (bool)jToken["is_potentially_hazardous_asteroid"];
                         asteroid.closeApproach = new AsteroidCloseApproach();
                         asteroid.closeApproach.Date = DateTime.Parse((string)jToken["close_approach_data"].First["close_approach_date"]);
                         asteroid.closeApproach.MissDistanceKm= (double)jToken["close_approach_data"].First["miss_distance"]["kilometers"];
@@ -83,7 +83,7 @@ namespace DAL
                             asteroid.Name = (string)jToken["name"];
                             asteroid.Id = (string)jToken["id"];
                             asteroid.DiameterInKm = ((double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_min"] + (double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_max"]) / 2;
-                            asteroid.isDangerous = (bool)jToken["is_potentially_hazardous_asteroid"];
+                            asteroid.IsDangerous = (bool)jToken["is_potentially_hazardous_asteroid"];
                             asteroid.closeApproach = new AsteroidCloseApproach();
                             asteroid.closeApproach.Date = DateTime.Parse((string)jToken["close_approach_data"].First["close_approach_date"]);
                             asteroid.closeApproach.MissDistanceKm = (double)jToken["close_approach_data"].First["miss_distance"]["kilometers"];

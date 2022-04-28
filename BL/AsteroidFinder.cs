@@ -46,7 +46,7 @@ namespace BL
         /// </returns>        
         public IEnumerable<Asteroid> GetAsteroids(DateTime StartDate, DateTime EndDate, bool IsDangerous=false, double DiameterInKm=0)
         {
-            if (StartDate == DateTime.Now)
+            if (StartDate == DateTime.Today)
                 return DAL.GetAsteroidsForToday(IsDangerous, DiameterInKm);
             else
             {

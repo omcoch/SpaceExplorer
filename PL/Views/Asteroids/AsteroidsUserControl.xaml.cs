@@ -26,7 +26,7 @@ namespace PL.Views
         public AsteroidsUserControl()
         {
             InitializeComponent();
-            CurrentVM = new AsteroidVM(NameTextBox);
+            CurrentVM = new AsteroidVM();
             DataContext = CurrentVM;  
         }
 

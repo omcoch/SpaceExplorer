@@ -1,15 +1,14 @@
 ﻿using DataProtocol;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace PL.ViewModels
 {
     public interface IAsteroidVM
     {
-        string Diameter { get; set; }
-        bool IsDangerous { get; set; }
-        string Name { get; set; }
+        ObservableCollection<Asteroid> AsteroidResult { get; set; }
 
-        List<Asteroid> AsteroidResult { get; set; }
-        List<AsteroidCloseApproach> AsteroidCloseApproachResult { get; set; }
+        void GetAsteroids(Asteroid asteroid);
     }
 }

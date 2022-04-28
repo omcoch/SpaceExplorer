@@ -1,5 +1,6 @@
 ﻿using PL.ViewModels;
 using System;
+using DataProtocol;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,21 +23,20 @@ namespace PL.Commands
 
         protected override void OnExecute(object parameter)
         {
-            /.
-            /*
-             * to Do:
-             * needs to do one of three options:
-             * Get Today Astroids: new BL.AsteroidFinder().GetAsteroids(today , null, parameter[is Dangers], parameter[diameter])
-             * Get Week  Astroids: new BL.AsteroidFinder().GetAsteroids(StartDate,EndDate, parameter[is Dangers], parameter[diameter]);
-             * Get Asrtoid data:   new BL.AsteroidFinder().GetAsteroid(parameter[id])
-             * 
-             */
+            AsteroidVM.AsteroidResult.Clear();
+
+            Asteroid asteroid = parameter as Asteroid;
+
+            AsteroidVM.GetAsteroids(asteroid);
         }
 
         public override bool CanExecute(object parameter)
         { // At least one parameter is filled
+            Asteroid asteroid = parameter as Asteroid;
+
             return AsteroidVM != null && 
-                (AsteroidVM.IsDangerous != false || AsteroidVM.Diameter != null || AsteroidVM.Name != null);
+                (asteroid.IsDangerous != false || asteroid.DiameterInKm.ToString() != "" ||
+                asteroid.Name != null || asteroid.Id != null);
         }
 
 

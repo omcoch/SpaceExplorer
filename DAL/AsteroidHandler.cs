@@ -14,7 +14,7 @@ namespace DAL
         public IEnumerable<Asteroid> GetAsteroids(DateTime startDate, DateTime endDate,bool IsDangerous= false, double DiameterInKm = 0)
         {
             if (IsDangerous)
-                return NasaApi.asteroids(startDate, endDate).Where(A => A.isDangerous == true && A.DiameterInKm > DiameterInKm);
+                return NasaApi.asteroids(startDate, endDate).Where(A => A.IsDangerous == true && A.DiameterInKm > DiameterInKm);
             else return NasaApi.asteroids(startDate, endDate).Where(A => A.DiameterInKm > DiameterInKm);
         }
 
