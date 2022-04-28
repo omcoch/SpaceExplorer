@@ -34,7 +34,7 @@ namespace DAL
         {
             List<Asteroid> result = new List<Asteroid>();
             TimeSpan time = StartDate - EndDate;
-            Asteroid asteroid = new Asteroid();
+            Asteroid asteroid;
             if (time.TotalDays > 7)
                 throw new ArgumentException("Between the dates there must be a difference of less than or equal to seven days.");
             string url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + StartDate.ToString(DateFormat) + "&end_date=" + EndDate.ToString(DateFormat) + "&api_key=" + ApiKey;
@@ -48,6 +48,7 @@ namespace DAL
                 {
                     foreach (var jToken in item)
                     {
+                        asteroid = new Asteroid();
                         asteroid.Name = (string)jToken["name"];
                         asteroid.Id = (string)jToken["id"];
                         asteroid.DiameterInKm = ((double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_min"]+ (double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_max"])/2;
@@ -66,7 +67,7 @@ namespace DAL
         public IEnumerable<Asteroid> asteroidsFortoday(bool IsDangerous=false, double DiameterInKm=0)
         {
             List<Asteroid> result = new List<Asteroid>();
-            Asteroid asteroid = new Asteroid();
+            Asteroid asteroid;
             string url = "https://api.nasa.gov/neo/rest/v1/feed/today?" + "detailed=true&"+ "api_key=" + ApiKey;
             var responseStr = MakeHttpReq.Get(url);
             var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseStr);
@@ -80,6 +81,7 @@ namespace DAL
                     {
                         if (!IsDangerous || (bool)jToken["is_potentially_hazardous_asteroid"])
                         {
+                            asteroid = new Asteroid();
                             asteroid.Name = (string)jToken["name"];
                             asteroid.Id = (string)jToken["id"];
                             asteroid.DiameterInKm = ((double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_min"] + (double)jToken["estimated_diameter"]["kilometers"]["estimated_diameter_max"]) / 2;
