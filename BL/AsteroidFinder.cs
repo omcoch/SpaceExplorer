@@ -52,7 +52,11 @@ namespace BL
             {
                 try
                 {
-                    return DAL.GetAsteroids(StartDate, EndDate, IsDangerous, DiameterInKm);
+                    if (EndDate > StartDate)
+                        return DAL.GetAsteroids(StartDate, EndDate, IsDangerous, DiameterInKm);
+                    else 
+                        // probably the user got confused so we want to fix him...
+                        return DAL.GetAsteroids(EndDate, StartDate, IsDangerous, DiameterInKm);
                 }
                 catch (Exception)
                 {

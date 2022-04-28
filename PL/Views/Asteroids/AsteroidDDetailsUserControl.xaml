@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PL.Views" 
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:conv="clr-namespace:PL.Converters" xmlns:viewmodels="clr-namespace:PL.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AsteroidVM, IsDesignTimeCreatable=True}"
              mc:Ignorable="d" >
     <UserControl.Resources>
         <ResourceDictionary>
@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Popupbox.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <ImageBrush x:Key="CardBackgroundImage" ImageSource="/Assets/Images/stars_background.jpg"></ImageBrush>
+            <conv:BoolToDangerConverter x:Key="BoolToDangerConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     
@@ -58,12 +59,12 @@
                                   Text="{Binding DiameterInKm, StringFormat={}{0} KM}" />
                             <TextBlock
                                   Grid.Row="2"
-                                  Margin="16 0 16 8"
+                                  Margin="16 50 0 0"
                                   FontWeight="Bold"
                                   VerticalAlignment="Center"
                                   HorizontalAlignment="Left"
                                   Style="{StaticResource MaterialDesignBody2TextBlock}"
-                                  Text="{Binding IsDangerous, StringFormat={}{0} }" />
+                                  Text="{Binding IsDangerous, Converter={StaticResource BoolToDangerConverter}}" />
                             <StackPanel
                                   Grid.Row="2"
                                   Orientation="Horizontal"
@@ -73,30 +74,19 @@
                                     HorizontalAlignment="Right"
                                     Style="{StaticResource MaterialDesignToolForegroundPopupBox}"
                                     Padding="2 0 2 0">
-                                    <ListBox ItemsSource="{Binding ElementName=AsteroidResult, Path=closeApproach}">
-                                        
-                                    </ListBox>
+                                    <StackPanel>
+                                        <TextBlock Text="Close Approach" Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                                        <Label Content="Date: " Style="{StaticResource MaterialDesignLabel}"/>
+                                        <TextBlock Text="{Binding closeApproach.Date}"/>
+                                        <Label Content="Miss distance: " Style="{StaticResource MaterialDesignLabel}"/>
+                                        <TextBlock Text="{Binding closeApproach.MissDistanceKm}"/>
+                                        <Label Content="Velocity: " Style="{StaticResource MaterialDesignLabel}"/>
+                                        <TextBlock Text="{Binding closeApproach.VelocityKmPerH}"/>
+                                     </StackPanel>
                                 </materialDesign:PopupBox>
                             </StackPanel>
                         </Grid>
                     </materialDesign:Card>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-
-        <ListBox ItemsSource="{Binding ElementName=AsteroidResult, Path=AsteroidCloseApproachResult, Mode=OneWay}" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Background="WhiteSmoke">
-                        <Label Content="Date: "/>
-                        <TextBlock Text="{Binding Date}"/>
-
-                        <Label Content="Distance (km): "/>
-                        <TextBlock Text="{Binding MissDistanceKm}"/>
-
-                        <Label Content="Velocity (km): "/>
-                        <TextBlock Text="{Binding VelocityKmPerH}"/>
-                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

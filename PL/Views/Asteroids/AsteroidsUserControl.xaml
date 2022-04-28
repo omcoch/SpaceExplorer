@@ -34,8 +34,8 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
-            <DatePicker Name="StartDatePicker" DisplayDate="{Binding StartDate}"/>
-            <DatePicker Name="EndDatePicker" DisplayDate="{Binding EndDate}"/>
+            <DatePicker Style="{StaticResource MahApps.Styles.DatePicker}" Name="StartDatePicker" SelectedDate="{Binding StartDate}"/>
+            <DatePicker Name="EndDatePicker" SelectedDate="{Binding EndDate}"/>
 
             <TextBox
                 Name="NameTextBox"

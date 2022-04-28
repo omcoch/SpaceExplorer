@@ -34,7 +34,7 @@ namespace PL.Commands
         { // At least one parameter is filled
             Asteroid asteroid = parameter as Asteroid;
 
-            return AsteroidVM != null && 
+            return AsteroidVM != null && AsteroidVM.ValidateDatesDistance() &&
                 (asteroid.IsDangerous != false || asteroid.DiameterInKm.ToString() != "" ||
                 asteroid.Name != null || asteroid.Id != null);
         }

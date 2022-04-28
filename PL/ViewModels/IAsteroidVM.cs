@@ -10,5 +10,6 @@ namespace PL.ViewModels
         ObservableCollection<Asteroid> AsteroidResult { get; set; }
 
         void GetAsteroids(Asteroid asteroid);
+        bool ValidateDatesDistance();
     }
 }

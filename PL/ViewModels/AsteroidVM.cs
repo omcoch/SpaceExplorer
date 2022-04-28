@@ -68,5 +68,10 @@ namespace PL.ViewModels
             Model.GetAsteroids(StartDate, EndDate, asteroid.IsDangerous, asteroid.DiameterInKm).ToList()
                 .ForEach(a => AsteroidResult.Add(a));
         }
+
+        public bool ValidateDatesDistance()
+        {
+            return EndDate >= StartDate;
+        }
     }
 }

@@ -14,14 +14,12 @@ namespace PL.Models
         public DateTime EndDate;
 
         public List<Asteroid> AsteroidResult { get; set; }
-        public List<AsteroidCloseApproach> AsteroidCloseApproachResult { get; set; }
 
         private AsteroidFinder BL;
 
         public AsteroidModel()
         {
             AsteroidResult = new List<Asteroid>();  
-            AsteroidCloseApproachResult = new List<AsteroidCloseApproach>();
             StartDate = DateTime.Today;
             EndDate = DateTime.Today;
             BL = new AsteroidFinder();
