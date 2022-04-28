@@ -6,20 +6,80 @@
              xmlns:local="clr-namespace:PL.Views" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Card.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Popupbox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <ImageBrush x:Key="CardBackgroundImage" ImageSource="/Assets/Images/stars_background.jpg"></ImageBrush>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
     <StackPanel>
         <ListBox ItemsSource="{Binding AsteroidResult, UpdateSourceTrigger=PropertyChanged}" 
-                 Style="{StaticResource MahApps.Styles.ListBox.Virtualized}">
+                Style="{StaticResource MaterialDesignCardsListBox}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <GroupBox Width="300">
-                        <GroupBox.Header>
-                            <TextBlock HorizontalAlignment="Center" Text="{Binding Name}" />
-                        </GroupBox.Header>
-                        <StackPanel>
-                            <TextBlock Text="{Binding DiameterInKm}"/>
-                            <TextBlock Text="{Binding IsDangerous}"/>
-                        </StackPanel>
-                    </GroupBox>
+                    <materialDesign:Card
+                          Background="{StaticResource CardBackgroundImage}"
+                          Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"                            
+                          Padding="0"
+                          Width="210">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                  Grid.Row="0"
+                                  Margin="16 16 16 4"
+                                  Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                                  Text="{Binding Name}" />
+                              <Separator
+                                  Grid.Row="1"
+                                  Style="{StaticResource MaterialDesignLightSeparator}" />
+                               <TextBlock
+                                  Grid.Row="2"
+                                  Margin="16 0 16 8"
+                                  FontWeight="Bold"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Left"
+                                  Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                  Text="{Binding DiameterInKm, StringFormat={}{0} KM}" />
+                            <TextBlock
+                                  Grid.Row="2"
+                                  Margin="16 0 16 8"
+                                  FontWeight="Bold"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Left"
+                                  Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                  Text="{Binding IsDangerous, StringFormat={}{0} }" />
+                            <StackPanel
+                                  Grid.Row="2"
+                                  Orientation="Horizontal"
+                                  Margin="16 0 16 8"
+                                  HorizontalAlignment="Right">
+                                <materialDesign:PopupBox
+                                    HorizontalAlignment="Right"
+                                    Style="{StaticResource MaterialDesignToolForegroundPopupBox}"
+                                    Padding="2 0 2 0">
+                                    <ListBox ItemsSource="{Binding ElementName=AsteroidResult, Path=closeApproach}">
+                                        
+                                    </ListBox>
+                                </materialDesign:PopupBox>
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Card>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
