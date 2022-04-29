@@ -30,11 +30,19 @@
                             </ResourceDictionary.MergedDictionaries>
                         </ResourceDictionary>
                     </DataTemplate.Resources>
-                    <DockPanel>
-                        <DockPanel.Background>
+                    <Grid>
+                        <Grid.Background>
                             <ImageBrush ImageSource="{Binding Uri}" Stretch="Fill" />
-                        </DockPanel.Background>
-                        <StackPanel DockPanel.Dock="Left">
+                        </Grid.Background>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Row="0" Grid.Column="0">
                             <WrapPanel>
                                 <Label Content="Planet Name: "/>
                                 <TextBlock Text="{Binding PlanetName}"/>
@@ -55,6 +63,8 @@
                                 <Label Content="Gravity: "/>
                                 <TextBlock Text="{Binding Gravity}"/>
                             </WrapPanel>
+                        </StackPanel>
+                        <StackPanel  Grid.Row="1" Grid.Column="0">                            
                             <WrapPanel>
                                 <Label Content="MEscape_Velocityass: "/>
                                 <TextBlock Text="{Binding MEscape_Velocityass}"/>
@@ -76,7 +86,7 @@
                                 <TextBlock Text="{Binding Perihelion}"/>
                             </WrapPanel>
                         </StackPanel>
-                        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right">
+                        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">                                                   
                             <WrapPanel>
                                 <Label Content="Aphelion: "/>
                                 <TextBlock Text="{Binding Aphelion}"/>
@@ -88,7 +98,7 @@
                             <WrapPanel>
                                 <Label Content="Orbital_Velocity: "/>
                                 <TextBlock Text="{Binding Orbital_Velocity}"/>
-                            </WrapPanel>
+                            </WrapPanel>                        
                             <WrapPanel>
                                 <Label Content="Orbital_Inclination: "/>
                                 <TextBlock Text="{Binding Orbital_Inclination}"/>
@@ -96,7 +106,9 @@
                             <WrapPanel>
                                 <Label Content="Orbital_Eccentricity: "/>
                                 <TextBlock Text="{Binding Orbital_Eccentricity}"/>
-                            </WrapPanel>
+                            </WrapPanel>                            
+                        </StackPanel>
+                        <StackPanel  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">
                             <WrapPanel>
                                 <Label Content="Obliquity_To_Orbit: "/>
                                 <TextBlock Text="{Binding Obliquity_To_Orbit}"/>
@@ -122,7 +134,7 @@
                                 <TextBlock Text="{Binding Has_Global_Magnetic_Field}"/>
                             </WrapPanel>
                         </StackPanel>
-                    </DockPanel>
+                    </Grid>
                 </DataTemplate>
             </mah:FlipView.ItemTemplate>
         </mah:FlipView>

@@ -37,7 +37,9 @@ namespace PL.Commands
 
             if (!SearchVM.SearchByName(input))
                 MessageBox.Show("No results");
-           
+                
+
+
         }
 
 

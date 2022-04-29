@@ -89,6 +89,9 @@
     <Compile Include="Views\Asteroids\AsteroidsUserControl.xaml.cs">
       <DependentUpon>AsteroidsUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\BeforeItem.xaml.cs">
+      <DependentUpon>BeforeItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DailyImageUserControl.xaml.cs">
       <DependentUpon>DailyImageUserControl.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
     <Page Include="Views\Asteroids\AsteroidsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BeforeItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\DailyImageUserControl.xaml">
       <SubType>Designer</SubType>
@@ -250,6 +257,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\background.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\LevLogo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

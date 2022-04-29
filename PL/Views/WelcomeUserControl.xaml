@@ -9,6 +9,60 @@
              mc:Ignorable="d" 
              >
 
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <Image
+            Grid.Row="0"
+            Grid.Column="2"
+            HorizontalAlignment="Right"
+            Opacity="0.8"
+            
+            Source="/Assets/Images/LevLogo.jpg" />
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            HorizontalAlignment="Center"
+            FontWeight="DemiBold"
+            Foreground="DarkSlateBlue"
+            FontFamily="{StaticResource Starjhol}"
+            Style="{StaticResource MaterialDesignHeadline2TextBlock}"
+            Text="Space Eplorer" />
+
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="10,20,10,10"
+            FontSize="22"
+            Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+            Text="In This project we collect data from NASA and Imagga and present them according to the user's requests." />
+
+        <StackPanel
+            HorizontalAlignment="Center"
+            Grid.Row="3"
+            Grid.Column="0"
+            Margin="10">
+            <TextBlock Text="There are a few options, just check them out in the menu above." Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
+            <TextBlock Text="You can find:" Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
+            <local:BeforeItem TheText="View the image/video of the day by Nasa API" />
+            <local:BeforeItem TheText="Search for medi from Nasa and get the tags of them" />
+            <local:BeforeItem TheText="Find asteroids data filtered by some conditions" />
+            <local:BeforeItem TheText="View a data profile for The eight planets." />
+        </StackPanel>
+    </Grid>
 
 </UserControl>

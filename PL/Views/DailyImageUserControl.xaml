@@ -32,7 +32,7 @@
         </ScrollViewer>
         <web:ChromiumWebBrowser Grid.Column="1"
                         Address="{Binding ImageUri}"
-                        ToolTip="Nasa Daily Image" />
+                        ToolTip="{Binding ImageTitle}" />
 
     </Grid>
 </UserControl>
