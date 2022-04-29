@@ -29,9 +29,10 @@ namespace DAL
             var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseStr);
             if((long)dict["totalItems"]!=0)
             {
-                TleInfo tleInfo = new TleInfo();
+                TleInfo tleInfo; 
                 foreach (var item in (dict["member"] as Newtonsoft.Json.Linq.JArray))
                 {
+                    tleInfo = new TleInfo();
                     tleInfo.Link = (string)item["@id"];
                     tleInfo.Name = (string)item["name"];
                     tleInfo.Type= (string)item["@type"];

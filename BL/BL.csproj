@@ -49,6 +49,7 @@
     <Compile Include="FirebaseImages.cs" />
     <Compile Include="SearchMedia.cs" />
     <Compile Include="Suggestions.cs" />
+    <Compile Include="TleHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

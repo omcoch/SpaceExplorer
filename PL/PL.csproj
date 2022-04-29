@@ -74,6 +74,7 @@
     <Compile Include="Domain\NotEmptyValidationRule.cs" />
     <Compile Include="Models\AsteroidModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
+    <Compile Include="Models\TleModle.cs" />
     <Compile Include="ViewModels\AsteroidVM.cs" />
     <Compile Include="ViewModels\ISearchVM.cs" />
     <Compile Include="ViewModels\IAsteroidVM.cs" />
