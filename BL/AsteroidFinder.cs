@@ -52,7 +52,8 @@ namespace BL
             {
                 try
                 {
-                    if (EndDate > StartDate)
+                    TimeSpan time = StartDate - EndDate;
+                    if (EndDate > StartDate && time.TotalDays > 7)
                         return DAL.GetAsteroids(StartDate, EndDate, IsDangerous, DiameterInKm);
                     else 
                         // probably the user got confused so we want to fix him...

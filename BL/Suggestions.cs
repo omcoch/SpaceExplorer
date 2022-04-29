@@ -20,5 +20,10 @@ namespace BL
             if (!string.IsNullOrEmpty(newData))
                 TermHistory.AddTerm(newData);
         }
+
+        public string GetSuggestion(string input)
+        {
+            return TermHistory.FindInDB(input);
+        }
     }
 }

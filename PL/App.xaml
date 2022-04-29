@@ -22,10 +22,7 @@
             <FontFamily x:Key="Starjedi">pack://application:,,,/Assets/Fonts/Starjedi/Starjedi.ttf#Star Jedi</FontFamily>
             <FontFamily x:Key="Starjhol">pack://application:,,,/Assets/Fonts/Starjedi/Starjhol.ttf#Star Jedi Hollow</FontFamily>
 
- 
-        </ResourceDictionary>
-
-        
-        
+            
+        </ResourceDictionary>      
     </Application.Resources>    
 </Application>

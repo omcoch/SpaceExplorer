@@ -1,0 +1,21 @@
+﻿using System;
+using System.Globalization;
+using System.Windows.Controls;
+
+namespace PL.Domain
+{
+    public class DatesValidationRule : ValidationRule
+    {
+        public DateTime StartDateValue { get; set; }
+        public DateTime EndDateValue { get; set; }
+
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            TimeSpan time = StartDateValue - EndDateValue;
+
+            return EndDateValue > StartDateValue && time.TotalDays > 7
+                ? new ValidationResult(false, "Distance of 7 days maximum")
+                : ValidationResult.ValidResult;
+        }
+    }
+}

@@ -24,6 +24,7 @@
                 <ResourceDictionary Source="/Assets/Style/AsteroidsStyle.xaml"/>                
             </ResourceDictionary.MergedDictionaries>
                 <conv:MultiValueToAsteroidConverter x:Key="MultiValueToAsteroidConverter"/>
+                <conv:DatesToObjectConverter x:Key="DatesToObjectConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>
     
@@ -35,7 +36,7 @@
 
         <StackPanel Grid.Column="0">
             <DatePicker Style="{StaticResource MahApps.Styles.DatePicker}" Name="StartDatePicker" SelectedDate="{Binding StartDate}"/>
-            <DatePicker Name="EndDatePicker" SelectedDate="{Binding EndDate}"/>
+            <DatePicker Name="EndDatePicker"> </DatePicker>
 
             <TextBox
                 Name="NameTextBox"

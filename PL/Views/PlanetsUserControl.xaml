@@ -34,48 +34,94 @@
                         <DockPanel.Background>
                             <ImageBrush ImageSource="{Binding Uri}" Stretch="Fill" />
                         </DockPanel.Background>
-                        <WrapPanel DockPanel.Dock="Bottom" Style="{StaticResource DetailsBox}">
-                            <Label Content="Planet Name: "/><TextBlock Text="{Binding PlanetName}"/>
-                            <Label Content="Mass: "/><TextBlock Text="{Binding Mass}"/>
-                            <Label Content="Diameter: "/>
-                            <TextBlock Text="{Binding Diameter}"/>
-                            <Label Content="Density: "/>
-                            <TextBlock Text="{Binding Density}"/>
-                            <Label Content="Gravity: "/>
-                            <TextBlock Text="{Binding Gravity}"/>
-                            <Label Content="MEscape_Velocityass: "/>
-                            <TextBlock Text="{Binding MEscape_Velocityass}"/>
-                            <Label Content="Rotation_Period: "/>
-                            <TextBlock Text="{Binding Rotation_Period}"/>
-                            <Label Content="Length_Of_Day: "/>
-                            <TextBlock Text="{Binding Length_Of_Day}"/>
-                            <Label Content="Distance_From_Sun: "/>
-                            <TextBlock Text="{Binding Distance_From_Sun}"/>
-                            <Label Content="Perihelion: "/>
-                            <TextBlock Text="{Binding Perihelion}"/>
-                            <Label Content="Aphelion: "/>
-                            <TextBlock Text="{Binding Aphelion}"/>
-                            <Label Content="Orbital_Period: "/>
-                            <TextBlock Text="{Binding Orbital_Period}"/>
-                            <Label Content="Orbital_Velocity: "/>
-                            <TextBlock Text="{Binding Orbital_Velocity}"/>
-                            <Label Content="Orbital_Inclination: "/>
-                            <TextBlock Text="{Binding Orbital_Inclination}"/>
-                            <Label Content="Orbital_Eccentricity: "/>
-                            <TextBlock Text="{Binding Orbital_Eccentricity}"/>
-                            <Label Content="Obliquity_To_Orbit: "/>
-                            <TextBlock Text="{Binding Obliquity_To_Orbit}"/>
-                            <Label Content="Mean_Temperature: "/>
-                            <TextBlock Text="{Binding Mean_Temperature}"/>
-                            <Label Content="Surface_Pressure: "/>
-                            <TextBlock Text="{Binding Surface_Pressure}"/>
-                            <Label Content="Number_Of_Moons: "/>
-                            <TextBlock Text="{Binding Number_Of_Moons}"/>
-                            <Label Content="Has_Ring_System: "/>
-                            <TextBlock Text="{Binding Has_Ring_System}"/>
-                            <Label Content="Has_Global_Magnetic_Field: "/>
-                            <TextBlock Text="{Binding Has_Global_Magnetic_Field}"/>
-                        </WrapPanel>
+                        <StackPanel DockPanel.Dock="Left">
+                            <WrapPanel>
+                                <Label Content="Planet Name: "/>
+                                <TextBlock Text="{Binding PlanetName}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Mass: "/>
+                                <TextBlock Text="{Binding Mass}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Diameter: "/>
+                                <TextBlock Text="{Binding Diameter}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Density: "/>
+                                <TextBlock Text="{Binding Density}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Gravity: "/>
+                                <TextBlock Text="{Binding Gravity}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="MEscape_Velocityass: "/>
+                                <TextBlock Text="{Binding MEscape_Velocityass}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Rotation_Period: "/>
+                                <TextBlock Text="{Binding Rotation_Period}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Length_Of_Day: "/>
+                                <TextBlock Text="{Binding Length_Of_Day}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Distance_From_Sun: "/>
+                                <TextBlock Text="{Binding Distance_From_Sun}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Perihelion: "/>
+                                <TextBlock Text="{Binding Perihelion}"/>
+                            </WrapPanel>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Right" HorizontalAlignment="Right">
+                            <WrapPanel>
+                                <Label Content="Aphelion: "/>
+                                <TextBlock Text="{Binding Aphelion}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Orbital_Period: "/>
+                                <TextBlock Text="{Binding Orbital_Period}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Orbital_Velocity: "/>
+                                <TextBlock Text="{Binding Orbital_Velocity}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Orbital_Inclination: "/>
+                                <TextBlock Text="{Binding Orbital_Inclination}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Orbital_Eccentricity: "/>
+                                <TextBlock Text="{Binding Orbital_Eccentricity}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Obliquity_To_Orbit: "/>
+                                <TextBlock Text="{Binding Obliquity_To_Orbit}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Mean_Temperature: "/>
+                                <TextBlock Text="{Binding Mean_Temperature}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Surface_Pressure: "/>
+                                <TextBlock Text="{Binding Surface_Pressure}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Number_Of_Moons: "/>
+                                <TextBlock Text="{Binding Number_Of_Moons}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Has_Ring_System: "/>
+                                <TextBlock Text="{Binding Has_Ring_System}"/>
+                            </WrapPanel>
+                            <WrapPanel>
+                                <Label Content="Has_Global_Magnetic_Field: "/>
+                                <TextBlock Text="{Binding Has_Global_Magnetic_Field}"/>
+                            </WrapPanel>
+                        </StackPanel>
                     </DockPanel>
                 </DataTemplate>
             </mah:FlipView.ItemTemplate>

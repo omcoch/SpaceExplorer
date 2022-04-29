@@ -3,6 +3,7 @@ using DataProtocol;
 using PL.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Documents;
 
 namespace PL.Commands
@@ -10,12 +11,12 @@ namespace PL.Commands
     public class SearchCommand : CommandBase
     {
         private ISearchVM SearchVM;
-        private SearchMedia SearchBL;
+        
 
         public SearchCommand(ISearchVM searchVM)
         {
             SearchVM = searchVM;
-            SearchBL = new SearchMedia();
+            
         }
 
         public override bool CanExecute(object SearchInput)
@@ -32,12 +33,11 @@ namespace PL.Commands
                 SearchVM.SearchResult = new System.Collections.ObjectModel.ObservableCollection<Media>();
             else
                 SearchVM.SearchResult.Clear();
-            
-            SearchVM.SearchResult = new System.Collections.ObjectModel.ObservableCollection<Media>() { SearchBL.SearchByName(input).First() };
-            
 
-            SearchVM.Callback(input);
 
+            if (!SearchVM.SearchByName(input))
+                MessageBox.Show("No results");
+           
         }
 
 

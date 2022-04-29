@@ -26,6 +26,18 @@ namespace DAL
             }
         }
 
+        public string FindInDB(string input)
+        {
+            using (var ctx = new SpaceExplorerDBContext())
+            {
+                return (from m in ctx.SearchHistoryObjects
+                        where m.SearchTerm.ToLower().StartsWith(input.ToLower())
+                        select m.SearchTerm)
+                        .FirstOrDefault();
+            }
+        }
+
+
         public List<string> GetAllSuggestions()
         {
             using (var ctx = new SpaceExplorerDBContext())

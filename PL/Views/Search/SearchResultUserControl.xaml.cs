@@ -25,10 +25,5 @@ namespace PL.Views
             InitializeComponent();            
         }
 
-
-        private void ListBox_Loaded(object sender, RoutedEventArgs e)
-        {
-MessageBox.Show("");
-        }
     }
 }

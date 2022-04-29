@@ -16,25 +16,30 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <StackPanel x:Name="stackPanel">
-        <mah:MetroHeader mah:HeaderedControlHelper.HeaderFontWeight="Bold" mah:HeaderedControlHelper.HeaderForeground="{DynamicResource MahApps.Brushes.Accent}"
-                            Header="Search For Something" mah:HeaderedControlHelper.HeaderFontSize="34"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="stackPanel" Grid.Row="0">
+            <mah:MetroHeader mah:HeaderedControlHelper.HeaderFontWeight="Bold" mah:HeaderedControlHelper.HeaderForeground="{DynamicResource MahApps.Brushes.Accent}"
+                                Header="Search For Something" mah:HeaderedControlHelper.HeaderFontSize="34"/>
 
-        <TextBox Name="SearchTextBox">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="KeyUp">
-                    <i:InvokeCommandAction Command="{Binding SuggestionCommand}" CommandParameter="{Binding ElementName=SearchTextBox, Mode=OneWay}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <TextBox.InputBindings>
-                <KeyBinding Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=SearchTextBox, Path=Text, UpdateSourceTrigger=PropertyChanged}" Key="Enter" />
-            </TextBox.InputBindings>
-        </TextBox>
-        <Button Content="Find Now!" Width="{Binding ActualWidth, Converter={StaticResource MathDivideConverter}, ConverterParameter=4, ElementName=stackPanel, Mode=OneWay}"
-                Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=SearchTextBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Name="SearchTextBox" Style="{StaticResource SearchTextBox}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="KeyUp">
+                        <i:InvokeCommandAction Command="{Binding SuggestionCommand}" CommandParameter="{Binding ElementName=SearchTextBox, Mode=OneWay}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=SearchTextBox, Path=Text, UpdateSourceTrigger=PropertyChanged}" Key="Enter" />
+                </TextBox.InputBindings>
+            </TextBox>
+            <Button Style="{StaticResource SearchButton}" Content="Find Now!" Width="{Binding ActualWidth, Converter={StaticResource MathDivideConverter}, ConverterParameter=4, ElementName=stackPanel, Mode=OneWay}"
+                    Command="{Binding SearchCommand}" CommandParameter="{Binding ElementName=SearchTextBox, Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
 
-        <local:SearchResultUserControl DataContext="{Binding SearchResult}"/>
+        <local:SearchResultUserControl Grid.Row="1" Margin="0 40 0 0"/>
 
-    </StackPanel>
-
+    </Grid>
 </UserControl>

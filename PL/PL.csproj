@@ -61,12 +61,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\OpenLinkCommand.cs" />
     <Compile Include="Commands\SearchCommand.cs" />
     <Compile Include="Commands\SuggestionEventCommand.cs" />
     <Compile Include="Commands\SuggestionCommand.cs" />
     <Compile Include="Commands\FiletrAsteroidCommand.cs" />
     <Compile Include="Converters\BoolToDangerConverter.cs" />
+    <Compile Include="Converters\DatesToObjectConverter.cs" />
     <Compile Include="Converters\MultiValueToAsteroidConverter.cs" />
+    <Compile Include="Domain\DatesValidationRule .cs" />
     <Compile Include="Domain\IsNumberValidationRule.cs" />
     <Compile Include="Domain\NotEmptyValidationRule.cs" />
     <Compile Include="Models\AsteroidModel.cs" />

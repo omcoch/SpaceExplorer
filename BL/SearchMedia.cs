@@ -29,9 +29,20 @@ namespace BL
             return NasaApi.imageVideoSearchById(id);
         }
 
-        public List<string> GetTags(Media media)
+        public ImaggaTagsForImage GetTags(Media media)
         {
-            return new List<string>();
+            if (media == null || string.IsNullOrEmpty(media.Uri))
+                throw new ArgumentNullException(nameof(media.Uri));
+
+            return ImaggaApi.getImageTags(media.Uri);
+        }
+
+        public ImaggaTagsForImage GetCategories(Media media)
+        {
+            if (media == null || string.IsNullOrEmpty(media.Uri))
+                throw new ArgumentNullException(nameof(media.Uri));
+
+            return ImaggaApi.getImageCategories(media.Uri);
         }
 
     }

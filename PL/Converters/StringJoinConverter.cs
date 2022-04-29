@@ -4,16 +4,13 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 
-namespace MaterialDesign3Demo.Converters
+namespace PL.Converters
 {
     public class StringJoinConverter : IValueConverter
     {
-        public string Separator { get; set; }
-
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            IEnumerable values = value as IEnumerable ?? Array.Empty<object>();
-            return string.Join(Separator ?? "", values.OfType<object>());
+            return string.Join("Recommended for you to see: ", value as string);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
