@@ -39,6 +39,7 @@
             FontWeight="DemiBold"
             Foreground="DarkSlateBlue"
             FontFamily="{StaticResource Starjhol}"
+            VerticalAlignment="Center"
             Style="{StaticResource MaterialDesignHeadline2TextBlock}"
             Text="Space Eplorer" />
 
@@ -47,6 +48,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="3"
             Margin="10,20,10,10"
+            HorizontalAlignment="Center"
             FontSize="22"
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
             Text="In This project we collect data from NASA and Imagga and present them according to the user's requests." />
@@ -54,7 +56,7 @@
         <StackPanel
             HorizontalAlignment="Center"
             Grid.Row="3"
-            Grid.Column="0"
+            Grid.ColumnSpan="3"
             Margin="10">
             <TextBlock Text="There are a few options, just check them out in the menu above." Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
             <TextBlock Text="You can find:" Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
