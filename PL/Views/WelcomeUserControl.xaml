@@ -64,7 +64,7 @@
             <TextBlock Text="There are a few options, just check them out in the menu above." Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
             <TextBlock Text="You could find:" Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
             <local:BeforeItem TheText="View the image/video of the day by Nasa API" />
-            <local:BeforeItem TheText="Search for medi from Nasa and get the tags of them" />
+            <local:BeforeItem TheText="Search for media from Nasa and get the tags of them" />
             <local:BeforeItem TheText="Find asteroids data filtered by some conditions" />
             <local:BeforeItem TheText="View a data profile for The eight planets." />
         </StackPanel>
