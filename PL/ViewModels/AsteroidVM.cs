@@ -2,14 +2,9 @@
 using PL.Commands;
 using PL.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace PL.ViewModels
 {
@@ -71,14 +66,14 @@ namespace PL.ViewModels
                 { // default preview for the case of no results
                     Name = "No Results"
                 });
-            
+
             result.ForEach(a => AsteroidResult.Add(a));
         }
 
         public bool ValidateDatesDistance()
         {
-            TimeSpan time = StartDate - EndDate;
-            return EndDate > StartDate || time.TotalDays > 7;
+            TimeSpan time = EndDate - StartDate;
+            return EndDate > StartDate && time.TotalDays > 7;
         }
     }
 }
