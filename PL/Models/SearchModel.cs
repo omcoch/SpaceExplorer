@@ -68,20 +68,7 @@ namespace PL.Models
          */
         public IEnumerable<Media> SearchByName(string input)
         {
-            var results = SearchBL.SearchByName(input);
-
-            results.ToList().ForEach(item => AddImaggaTagsForImage(item));
-
-            return results;
-        }
-
-        private ImaggaTagsForImage AddImaggaTagsForImage(Media media)
-        {
-            if (media.Tags == null)
-                media.Tags = new List<ImaggaTagsForImage>();
-
-            var tags = SearchBL.GetTags(media);
-            return tags;
+            return SearchBL.SearchByName(input);
         }
     }
 }

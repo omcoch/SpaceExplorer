@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Windows.Controls;
 
-namespace PL.Domain
+namespace PL.Validations
 {
     public class NotEmptyValidationRule : ValidationRule
     {

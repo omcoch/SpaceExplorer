@@ -10,9 +10,8 @@ namespace PL.Converters
         {
             return new DataProtocol.Asteroid
             {
-                Name = values[0] as string,
-                DiameterInKm = values[1].ToString() != "" ? double.Parse(values[1].ToString()) : 0.0,
-                IsDangerous = (bool)values[2],
+                DiameterInKm = double.TryParse(values[1].ToString(), out double d) ? d : 0.0,
+                IsDangerous = (bool)values[1],
             };
         }
 

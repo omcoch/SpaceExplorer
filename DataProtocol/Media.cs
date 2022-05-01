@@ -24,7 +24,8 @@ namespace DataProtocol
         [Required]
         public string Uri { get; set; }
                 
-        public List<ImaggaTagsForImage> Tags { get; set; }
+        public List<ImaggaTagForImage> Tags { get; set; }
+        public List<ImaggaTagForImage> Categories { get; set; }
 
         // TimeStamp as byte[] columns cannot be used in comparisons... 
         public DateTime Day { get; set; }

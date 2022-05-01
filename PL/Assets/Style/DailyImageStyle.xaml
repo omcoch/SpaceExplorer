@@ -17,8 +17,8 @@
 
     <Style TargetType="TextBlock" x:Key="TitleStyle">
         <Setter Property="FontSize" Value="30" />
-        <Setter Property="Foreground" Value="{StaticResource MahApps.Brushes.Accent}"/>
-        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="DarkSlateBlue"/>
+        <Setter Property="FontWeight" Value="ExtraBold"/>
         <Setter Property="FontFamily" Value="{StaticResource Starjhol}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="Padding" Value="20,0,0,0"/>

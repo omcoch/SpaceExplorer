@@ -33,10 +33,7 @@ namespace PL.Commands
         public override bool CanExecute(object parameter)
         { // At least one parameter is filled
             Asteroid asteroid = parameter as Asteroid;
-
-            return AsteroidVM != null && AsteroidVM.ValidateDatesDistance() &&
-                (asteroid.IsDangerous != false || asteroid.DiameterInKm.ToString() != "" ||
-                asteroid.Name != null || asteroid.Id != null);
+            return AsteroidVM != null && AsteroidVM.ValidateDatesDistance();
         }
 
 

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:PL.Views" 
-             xmlns:domain="clr-namespace:PL.Domain" 
+             xmlns:validation="clr-namespace:PL.Validations" 
              xmlns:conv="clr-namespace:PL.Converters" 
              xmlns:viewmodels="clr-namespace:PL.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AsteroidVM}"
              mc:Ignorable="d">
@@ -33,26 +33,23 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
+        
 
         <StackPanel Grid.Column="0">
-            <DatePicker Style="{StaticResource MahApps.Styles.DatePicker}" Name="StartDatePicker" SelectedDate="{Binding StartDate}"/>
-            <DatePicker Name="EndDatePicker"> </DatePicker>
 
-            <TextBox
-                Name="NameTextBox"
-                Text="{Binding Name}"
-                Style="{StaticResource MaterialDesignFilledTextBox}"
-                materialDesign:HintAssist.Hint="Name or Id">
-            </TextBox>
-            
-            <TextBox
+            <TextBlock TextWrapping="Wrap" Style="{StaticResource Instructions}">Please filter by dates (in distance of 7 days), diameter or dangerous</TextBlock>
+
+            <DatePicker Name="StartDatePicker" Style="{StaticResource MaterialDesignFilledDatePicker}" SelectedDate="{Binding StartDate}" Margin="0 10 0 10"/>
+            <DatePicker Name="EndDatePicker" Style="{StaticResource MaterialDesignFilledDatePicker}"  SelectedDate="{Binding EndtDate}"  Margin="0 20 0 10"/>
+
+            <TextBox Margin="0 20 0 10"
                 Name="DiameterTextBox"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 materialDesign:HintAssist.Hint="Diameter in km">
                 <TextBox.Text>
-                    <Binding Path="Diameter" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="DiameterTextBox" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <domain:IsNumberValidationRule ValidatesOnTargetUpdated="True"/>
+                            <validation:IsDoubleValidationRule ValidatesOnTargetUpdated="True" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -62,16 +59,18 @@
                 Name="IsDangerousCheckBox"
                 Content="Is dangerous"
                 IsChecked="{Binding IsDangerous}"
+                Style="{StaticResource MaterialDesignFilterChipPrimaryCheckBox}"
+                HorizontalAlignment="Center" Margin="0 20 0 10"
                 />
 
             <Button
-                Style="{StaticResource MaterialDesignFloatingActionButton}"
+                Style="{StaticResource MaterialDesignFloatingActionButton}" Margin="0 40 0 10"
                 materialDesign:ButtonProgressAssist.IsIndeterminate="True"
                 Content="{materialDesign:PackIcon Kind=Search}"
-                Command="{Binding FiletrAsteroidCommand}">
+                Command="{Binding FiletrAsteroidCommand}"
+                >
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource MultiValueToAsteroidConverter}">
-                        <Binding Path="Text" ElementName="NameTextBox"/>
                         <Binding Path="Text" ElementName="DiameterTextBox"/>
                         <Binding Path="IsChecked" ElementName="IsDangerousCheckBox"/>
                     </MultiBinding>
@@ -81,7 +80,7 @@
         </StackPanel>
 
 
-        <local:AsteroidDDetailsUserControl Grid.Column="1"/>
+        <local:AsteroidDDetailsUserControl Grid.Column="1" Margin="60 50 0 0"/>
 
     </Grid>
 </UserControl>

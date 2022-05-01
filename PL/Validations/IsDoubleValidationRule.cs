@@ -1,14 +1,13 @@
 ﻿using System.Globalization;
 using System.Windows.Controls;
 
-namespace PL.Domain
+namespace PL.Validations
 {
-    public class IsNumberValidationRule : ValidationRule
+    public class IsDoubleValidationRule : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            double result;
-            return !double.TryParse((value ?? "").ToString(), out result)
+            return !double.TryParse(value.ToString(), out double d)
                 ? new ValidationResult(false, "Field must be double.")
                 : ValidationResult.ValidResult;
         }

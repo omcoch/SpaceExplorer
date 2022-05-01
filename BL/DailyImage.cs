@@ -2,6 +2,7 @@
 using DataProtocol;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -20,7 +21,7 @@ namespace BL
         {
             Media ImageDetails;
 
-            ImageDetails = DAL.GetImageFromDB(DateTime.Today);
+            ImageDetails = DAL.GetImageByName(DateNameFormat());
             if (ImageDetails != null)
                 return new List<Media> { ImageDetails };
 
@@ -29,6 +30,7 @@ namespace BL
             {
                 // Save in db for the next time.
                 // Validation doesn't necessary because it base on data from the code itself
+                ImageDetails.Name = DateNameFormat();
                 DAL.SaveMediaInDB(ImageDetails);
 
                 return new List<Media> { ImageDetails };
@@ -43,6 +45,13 @@ namespace BL
         {
             return new Media() { Title = "No Image", Description = "This is default image", Uri = "" };
 
+        }
+
+        private string DateNameFormat()
+        {
+            //TimeZoneInfo tzObject = TimeZoneInfo.Local;
+            //DateTime tstTime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, tzObject);
+            return "NasaDailyImage" + DateTime.Parse(DateTime.Today.ToString(), new CultureInfo("en-US"));
         }
     }
 }

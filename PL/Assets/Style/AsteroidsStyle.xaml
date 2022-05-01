@@ -5,10 +5,10 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
-    
-    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
-        <Setter Property="Margin" Value="0,15,0,15"/>
+
+    <Style TargetType="TextBlock" x:Key="Instructions"> 
+        <Setter Property="Foreground" Value="MediumPurple"/>
+        <Setter Property="Margin" Value="10 40 0 0"/>        
     </Style>
 
 

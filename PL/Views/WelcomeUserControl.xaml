@@ -27,9 +27,12 @@
             Grid.Row="0"
             Grid.Column="2"
             HorizontalAlignment="Right"
-            Opacity="0.8"
-            
-            Source="/Assets/Images/LevLogo.jpg" />
+            Opacity="0.8"            
+            Source="/Assets/Images/LevLogo.jpg">
+            <Image.Clip>
+                <RectangleGeometry RadiusX="5" RadiusY="5" Rect="10,20,180,170"/>
+            </Image.Clip>
+        </Image>
 
         <TextBlock
             Grid.Row="0"
@@ -59,7 +62,7 @@
             Grid.ColumnSpan="3"
             Margin="10">
             <TextBlock Text="There are a few options, just check them out in the menu above." Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
-            <TextBlock Text="You can find:" Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
+            <TextBlock Text="You could find:" Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
             <local:BeforeItem TheText="View the image/video of the day by Nasa API" />
             <local:BeforeItem TheText="Search for medi from Nasa and get the tags of them" />
             <local:BeforeItem TheText="Find asteroids data filtered by some conditions" />

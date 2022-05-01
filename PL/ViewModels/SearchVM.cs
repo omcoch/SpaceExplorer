@@ -28,6 +28,8 @@ namespace PL.ViewModels
         public SearchVM()
         {
             Model = new SearchModel();
+            OpenLinkCommand = new OpenLinkCommand();
+            
             SuggestionValues = new ObservableCollection<string>(); //todo: remove from here the function and in the search itself (func below), extract qith linq only the one word that needed
             SuggestionValues.CollectionChanged += SuggestionValues_CollectionChanged;
 
@@ -38,7 +40,6 @@ namespace PL.ViewModels
             SearchResult = new ObservableCollection<Media>();
             SearchResult.CollectionChanged += SearchResult_CollectionChanged;
 
-            OpenLinkCommand = new OpenLinkCommand();
         }
 
         private void SearchResult_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -96,10 +97,20 @@ namespace PL.ViewModels
          */
         public bool SearchByName(string input)
         {
+            SearchResult.Clear();
             var result = Model.SearchByName(input);
             if (result == null || result.Count() <= 0)
+            {
+                // update a default "result", which means no real result. 
+                SearchResult.Add(new Media()
+                {
+                    Title = "No Results",
+                    Description = "No results were found for your search term.",
+                    Uri = "/Assets/Images/404search.png"
+                });
                 return false;
-            
+            }
+
             // adds the search results into the observable-collection
             result.ToList().ForEach(s => SearchResult.Add(s)); 
             

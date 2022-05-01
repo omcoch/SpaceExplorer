@@ -15,7 +15,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Popupbox.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <ImageBrush x:Key="CardBackgroundImage" ImageSource="/Assets/Images/stars_background.jpg"></ImageBrush>
+            <ImageBrush x:Key="CardBackgroundImage" ImageSource="/Assets/Images/background.gif"></ImageBrush>
             <conv:BoolToDangerConverter x:Key="BoolToDangerConverter"/>
         </ResourceDictionary>
     </UserControl.Resources>

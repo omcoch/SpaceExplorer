@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using DataProtocol;
 using Newtonsoft.Json;
@@ -17,7 +18,6 @@ namespace DAL
             Media result = new Media();
             var dict = MakeDateReq(date);
             
-            result.Name = "NasaDailyImageFor" + date.ToString(DateFormat);
             if(dict.ContainsKey("url"))
                result.Uri = dict["url"];
             if (dict.ContainsKey("explanation"))
@@ -169,6 +169,7 @@ namespace DAL
                     responseStr = MakeHttpReq.Get(basicUri + String.Format("search?q={0}", WhatToSearch));
                     var dict = JsonConvert.DeserializeObject<Dictionary<string, object>>(responseStr);
                     return (from item in (dict["collection"] as Newtonsoft.Json.Linq.JObject)["items"].Children()
+                            where item["links"] != null && item["data"] != null
                              select new Media()
                              {
                                  Name = (string)item["data"].First["title"],
@@ -176,8 +177,8 @@ namespace DAL
                                  Description = (string)item["data"].First["description"],
                                  Uri = (string)item["links"].First.First,
                                  NasaId = (string)item["data"].First["nasa_id"],
-                                 Day = DateTime.Now
-                             }).Take(10).ToList();
+                                 Day = DateTime.Parse(DateTime.Today.ToString(), new CultureInfo("en-US"))
+                             }).ToList();
                 }
                 return Enumerable.Empty<Media>();
             }

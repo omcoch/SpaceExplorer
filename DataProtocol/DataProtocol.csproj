@@ -85,7 +85,7 @@
   <ItemGroup>
     <Compile Include="Asteroid.cs" />
     <Compile Include="AsteroidCloseApproach.cs" />
-    <Compile Include="ImaggaTagsForImage.cs" />
+    <Compile Include="ImaggaTagForImage.cs" />
     <Compile Include="Media.cs" />
     <Compile Include="NasaLinksForObject.cs" />
     <Compile Include="Planet.cs" />

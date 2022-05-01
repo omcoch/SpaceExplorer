@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Controls;
 
-namespace PL.Domain
+namespace PL.Validations
 {
     public class DatesValidationRule : ValidationRule
     {
@@ -13,7 +13,7 @@ namespace PL.Domain
         {
             TimeSpan time = StartDateValue - EndDateValue;
 
-            return EndDateValue > StartDateValue && time.TotalDays > 7
+            return EndDateValue > StartDateValue || time.TotalDays > 7
                 ? new ValidationResult(false, "Distance of 7 days maximum")
                 : ValidationResult.ValidResult;
         }

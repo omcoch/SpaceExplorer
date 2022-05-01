@@ -29,16 +29,7 @@ namespace PL.Commands
         {
             var input = SearchInput as string;
 
-            if (SearchVM.SearchResult == null)
-                SearchVM.SearchResult = new System.Collections.ObjectModel.ObservableCollection<Media>();
-            else
-                SearchVM.SearchResult.Clear();
-
-
-            if (!SearchVM.SearchByName(input))
-                MessageBox.Show("No results");
-                
-
+            SearchVM.SearchByName(input);
 
         }
 

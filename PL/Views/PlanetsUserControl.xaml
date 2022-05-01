@@ -66,19 +66,19 @@
                         </StackPanel>
                         <StackPanel  Grid.Row="1" Grid.Column="0">                            
                             <WrapPanel>
-                                <Label Content="MEscape_Velocityass: "/>
-                                <TextBlock Text="{Binding MEscape_Velocityass}"/>
+                                <Label Content="Escape Velocity: "/>
+                                <TextBlock Text="{Binding Escape_Velocity}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Label Content="Rotation_Period: "/>
+                                <Label Content="Rotation Period: "/>
                                 <TextBlock Text="{Binding Rotation_Period}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Label Content="Length_Of_Day: "/>
+                                <Label Content="Length Of Day: "/>
                                 <TextBlock Text="{Binding Length_Of_Day}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Label Content="Distance_From_Sun: "/>
+                                <Label Content="Distance From Sun: "/>
                                 <TextBlock Text="{Binding Distance_From_Sun}"/>
                             </WrapPanel>
                             <WrapPanel>
@@ -92,45 +92,45 @@
                                 <TextBlock Text="{Binding Aphelion}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Label Content="Orbital_Period: "/>
+                                <Label Content="Orbital Period: "/>
                                 <TextBlock Text="{Binding Orbital_Period}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Label Content="Orbital_Velocity: "/>
+                                <Label Content="Orbital Velocity: "/>
                                 <TextBlock Text="{Binding Orbital_Velocity}"/>
                             </WrapPanel>                        
                             <WrapPanel>
-                                <Label Content="Orbital_Inclination: "/>
+                                <Label Content="Orbital Inclination: "/>
                                 <TextBlock Text="{Binding Orbital_Inclination}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Label Content="Orbital_Eccentricity: "/>
+                                <Label Content="Orbital Eccentricity: "/>
                                 <TextBlock Text="{Binding Orbital_Eccentricity}"/>
                             </WrapPanel>                            
                         </StackPanel>
                         <StackPanel  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">
                             <WrapPanel>
-                                <Label Content="Obliquity_To_Orbit: "/>
+                                <Label Content="Obliquity To_Orbit: "/>
                                 <TextBlock Text="{Binding Obliquity_To_Orbit}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Label Content="Mean_Temperature: "/>
+                                <Label Content="Mean Temperature: "/>
                                 <TextBlock Text="{Binding Mean_Temperature}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Label Content="Surface_Pressure: "/>
+                                <Label Content="Surface Pressure: "/>
                                 <TextBlock Text="{Binding Surface_Pressure}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Label Content="Number_Of_Moons: "/>
+                                <Label Content="Number Of Moons: "/>
                                 <TextBlock Text="{Binding Number_Of_Moons}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Label Content="Has_Ring_System: "/>
+                                <Label Content="Has Ring System: "/>
                                 <TextBlock Text="{Binding Has_Ring_System}"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Label Content="Has_Global_Magnetic_Field: "/>
+                                <Label Content="Has Global Magnetic Field: "/>
                                 <TextBlock Text="{Binding Has_Global_Magnetic_Field}"/>
                             </WrapPanel>
                         </StackPanel>

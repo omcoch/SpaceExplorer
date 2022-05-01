@@ -8,7 +8,9 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:PL.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SearchVM}"
              mc:Ignorable="d" >
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
-        <ListBox ItemsSource="{Binding SearchResult}" VerticalContentAlignment="Top">
+        <ListBox ItemsSource="{Binding SearchResult}" VerticalContentAlignment="Top" 
+                 Style="{StaticResource MaterialDesignCardsListBox}"
+                 d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListBox.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
@@ -18,6 +20,8 @@
                         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
                         <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
                     </ResourceDictionary.MergedDictionaries>
+                    <conv:FloorTagsConverter x:Key="TagsToStarsPConverter"/>
+                    <conv:TagsToFirstConverter x:Key="TagsToFirstConverter"/>
                 </ResourceDictionary>
             </ListBox.Resources>
 
@@ -29,7 +33,7 @@
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <materialDesign:Card Width="220">
+                    <materialDesign:Card Width="420" Padding="20 0 20 10">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
@@ -38,45 +42,46 @@
                             </Grid.RowDefinitions>
                             <Image
                                 Source="{Binding Uri}"
-                                MaxHeight="140"
-                                Stretch="UniformToFill"/>
+                                MaxHeight="290"
+                                Stretch="Fill"/>
                             <Button
                                 Grid.Row="0"
                                 Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
-                                Margin="0 0 16 -20"
-                                Command="{Binding OpenLinkCommand}" CommandParameter="{Binding Uri}">
+                                Margin="0 0 66 -20" Panel.ZIndex="3"
+                                Command="{Binding OpenLinkCommand}" CommandParameter="{Binding Uri, UpdateSourceTrigger=PropertyChanged}">
                                 <materialDesign:PackIcon Kind="ShareVariant" />
                             </Button>
-                            <StackPanel Grid.Row="1" Margin="8 24 8 4" >
-                                <TextBlock
-                                    Style="{StaticResource MaterialDesignHeadline6TextBlock}"
-                                    Foreground="CadetBlue"
-                                    TextWrapping="Wrap"
-                                    Margin="0"
-                                    Text="{Binding Title}"/>                                
-                                <TextBlock
-                                    Style="{StaticResource MaterialDesignBody1TextBlock}"
-                                    TextWrapping="Wrap" Foreground="Brown"
-                                    VerticalAlignment="Center"
-                                    Text="{Binding Description}"/>
-                                <Viewbox
-                                    Margin="0 8 0 8"
-                                    Height="16"
-                                    HorizontalAlignment="Left">
-                                    <materialDesign:RatingBar
-                                        Value="3"
-                                        Orientation="Horizontal"
-                                        Foreground="Gold"
-                                        Margin="0" />
-                                </Viewbox>
-                            </StackPanel>
-                            <TextBlock
-                            Grid.Row="2"
-                            Margin="8 4 8 4"
-                            Style="{StaticResource MaterialDesignBody2TextBlock}"
-                            Text="{Binding Name}"/>
+                            
+                            <Expander Grid.Row="1" Header="{Binding Title}" Style="{StaticResource MaterialDesignExpander}">                                
+                                <StackPanel Margin="08 10 8 4" >
+                                    <TextBlock
+                                        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+                                        Foreground="CadetBlue"
+                                        TextWrapping="Wrap"
+                                        Margin="0"
+                                        Text="{Binding Title}"/>
+                                    <TextBlock
+                                        Style="{StaticResource MaterialDesignBody1TextBlock}"
+                                        TextWrapping="Wrap" 
+                                        VerticalAlignment="Center"
+                                        Text="{Binding Description}"/>
+                                    <Viewbox
+                                        Margin="10 18 0 8"
+                                        Height="20"
+                                        HorizontalAlignment="Left">
+                                        <WrapPanel>
+                                            <materialDesign:RatingBar                                        
+                                            Value="{Binding Categories, Converter={StaticResource TagsToStarsPConverter}}"
+                                            Orientation="Horizontal"
+                                            Foreground="Gold"
+                                            Margin="0" />
+                                            <TextBlock Text="{Binding Categories, Converter={StaticResource TagsToFirstConverter}}" FontSize="17"/>
+                                        </WrapPanel>
+                                    </Viewbox>
+                                </StackPanel>
+                            </Expander>
                         </Grid>
                     </materialDesign:Card>
 

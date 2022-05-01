@@ -66,7 +66,7 @@ namespace DAL.Tests
         [TestMethod()]
         public void imageVideoSearchTest()
         {
-            List<Media> images = NasaApi.imageVideoSearch("March").ToList();
+            List<Media> images = NasaApi.imageVideoSearch("Mars").ToList();
             int i = 1;
             foreach (var item in images)
             {

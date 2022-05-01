@@ -18,10 +18,31 @@ namespace BL
 
         public IEnumerable<Media> SearchByName(string name)
         {
+            // Save search terms history
             if (!SearchTermHistory.TermInDB(name))
                 SearchTermHistory.AddTerm(name);
 
-            return NasaApi.imageVideoSearch(name);
+
+            // Get Image from DB/Nasa          
+            var Medias = NasaApi.imageVideoSearch(name)
+                .GroupBy(x => x.Title)
+                .Select(x => x.First())
+                .Take(10);
+
+            foreach (var media in Medias)
+            {
+                if (!MediaDetail.ExistsInDB(media.NasaId))
+                {
+                    media.Categories = ImaggaApi.getImageCategories(media); // Imagga useage
+                    SaveMediaInDB(media); // save in db the media + its categories
+                }
+                else
+                {
+                    media.Categories = MediaDetail.GetCategoriesDB(media.NasaId);
+                }
+            }
+
+            return Medias;
         }
 
         public NasaLinksForObject SearchById(string id)
@@ -29,20 +50,9 @@ namespace BL
             return NasaApi.imageVideoSearchById(id);
         }
 
-        public ImaggaTagsForImage GetTags(Media media)
+        private int SaveMediaInDB(Media media)
         {
-            if (media == null || string.IsNullOrEmpty(media.Uri))
-                throw new ArgumentNullException(nameof(media.Uri));
-
-            return ImaggaApi.getImageTags(media.Uri);
-        }
-
-        public ImaggaTagsForImage GetCategories(Media media)
-        {
-            if (media == null || string.IsNullOrEmpty(media.Uri))
-                throw new ArgumentNullException(nameof(media.Uri));
-
-            return ImaggaApi.getImageCategories(media.Uri);
+            return MediaDetail.SaveMediaInDB(media);
         }
 
     }

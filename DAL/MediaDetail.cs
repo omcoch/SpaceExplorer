@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,26 +16,42 @@ namespace DAL
 
         public Media GetImageOnline()
         {
-            return NasaApi.GetDailyImage(DateTime.Today);
+            return NasaApi.GetDailyImage(DateTime.Parse(DateTime.Today.ToString(), new CultureInfo("en-US")));
         }
 
-        public Media GetImageFromDB(DateTime today)
+        public Media GetImageByName(string name)
         {
             using (var ctx = new SpaceExplorerDBContext())
             {
                 var query = from m in ctx.MediaObjects
-                            where m.Day.Month == today.Month && m.Day.Year == today.Year && m.Day.Day == today.Day
+                            where m.Name == name
                             select m;
 
                 return query.FirstOrDefault();
             }
         }
 
-        public Media GetMediaDBNasa(string uri)
+        public Media GetMediaDBNasa(string nasaId)
         {
             using (var ctx = new SpaceExplorerDBContext())
             {
-                return ctx.MediaObjects.Where(m => m.Uri == uri).FirstOrDefault();
+                return ctx.MediaObjects.Where(m => m.NasaId == nasaId).FirstOrDefault();
+            }
+        }
+
+        public List<ImaggaTagForImage> GetTagsDB(string nasaId)
+        {
+            using (var ctx = new SpaceExplorerDBContext())
+            {
+                return ctx.MediaObjects.Where(m => m.NasaId == nasaId).Select(x => x.Tags).FirstOrDefault();
+            }
+        }
+
+        public List<ImaggaTagForImage> GetCategoriesDB(string nasaId)
+        {
+            using (var ctx = new SpaceExplorerDBContext())
+            {
+                return ctx.MediaObjects.Where(m => m.NasaId == nasaId).Select(x => x.Categories).FirstOrDefault();
             }
         }
 
@@ -53,6 +70,17 @@ namespace DAL
             {
                 return (from m in ctx.MediaObjects
                         where m.Day == today
+                        select m)
+                       .Count() > 0;
+            }
+        }
+
+        public bool ExistsInDB(string nasaId)
+        {
+            using (var ctx = new SpaceExplorerDBContext())
+            {
+                return (from m in ctx.MediaObjects
+                        where m.NasaId == nasaId
                         select m)
                        .Count() > 0;
             }

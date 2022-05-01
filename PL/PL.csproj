@@ -69,9 +69,11 @@
     <Compile Include="Converters\BoolToDangerConverter.cs" />
     <Compile Include="Converters\DatesToObjectConverter.cs" />
     <Compile Include="Converters\MultiValueToAsteroidConverter.cs" />
-    <Compile Include="Domain\DatesValidationRule .cs" />
-    <Compile Include="Domain\IsNumberValidationRule.cs" />
-    <Compile Include="Domain\NotEmptyValidationRule.cs" />
+    <Compile Include="Converters\FloorTagsConverter.cs" />
+    <Compile Include="Converters\TagsToFirstConverter.cs" />
+    <Compile Include="Validations\DatesValidationRule .cs" />
+    <Compile Include="Validations\IsDoubleValidationRule.cs" />
+    <Compile Include="Validations\NotEmptyValidationRule.cs" />
     <Compile Include="Models\AsteroidModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\TleModle.cs" />
@@ -261,6 +263,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\LevLogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\404search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -22,8 +22,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel x:Name="stackPanel" Grid.Row="0">
-            <mah:MetroHeader mah:HeaderedControlHelper.HeaderFontWeight="Bold" mah:HeaderedControlHelper.HeaderForeground="{DynamicResource MahApps.Brushes.Accent}"
-                                Header="Search For Something" mah:HeaderedControlHelper.HeaderFontSize="34"/>
+            <mah:MetroHeader mah:HeaderedControlHelper.HeaderFontWeight="Bold" mah:HeaderedControlHelper.HeaderForeground="MediumPurple" mah:HeaderedControlHelper.HeaderFontFamily="{StaticResource Starjhol}"
+                                Header="Search For Astronomy thing" mah:HeaderedControlHelper.HeaderFontSize="34"/>
 
             <TextBox Name="SearchTextBox" Style="{StaticResource SearchTextBox}">
                 <i:Interaction.Triggers>

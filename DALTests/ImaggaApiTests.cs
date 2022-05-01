@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataProtocol;
 
 namespace DAL.Tests
 {
@@ -17,11 +18,13 @@ namespace DAL.Tests
         [TestMethod()]
         public void getImageTagsTest()
         {
-            var results = ImaggaApi.getImageTags("https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/220px-OSIRIS_Mars_true_color.jpg");
-            var hresuls = ImaggaApi.getImageTags("https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/220px-OSIRIS_Mars_true_color.jpg", "he");
-            for (int i = 0; i < results.Tags.Count; i++)
+            Media m = new Media();
+            m.Uri = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/220px-OSIRIS_Mars_true_color.jpg";
+            var results = ImaggaApi.getImageTags(m);
+            var hresuls = ImaggaApi.getImageTags(m, "he");
+            for (int i = 0; i < results.Count; i++)
             {
-                Console.WriteLine("English: " + results.Tags[i] + " and now in hebrew: " + hresuls.Tags[i]);
+                Console.WriteLine("English: " + results[i] + " and now in hebrew: " + hresuls[i]);
             }
         }
 
@@ -32,9 +35,9 @@ namespace DAL.Tests
             Console.WriteLine("Image uri: " + image.Uri);
             Console.WriteLine("Image description: " + image.Description);
             Console.WriteLine("What does the imagga think there is:");
-            foreach (var item in ImaggaApi.getImageCategories(@"https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/220px-OSIRIS_Mars_true_color.jpg").Tags)
+            foreach (var item in ImaggaApi.getImageCategories(image))
             {               
-                Console.WriteLine(item);
+                Console.WriteLine(item.Tag);
             } 
         }
     }

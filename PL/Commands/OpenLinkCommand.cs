@@ -15,9 +15,6 @@ namespace PL.Commands
             System.Diagnostics.Process.Start("https://wa.me/?text=Recommended for you to see: " + message);
         }
 
-        public override bool CanExecute(object input)
-        {
-            return !string.IsNullOrEmpty(input as string);
-        }
+       
     }
 }
