@@ -35,7 +35,7 @@
                               Background="{StaticResource CardBackgroundImage}"
                               Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"                            
                               Padding="0"
-                              Width="210">
+                              Width="300">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />

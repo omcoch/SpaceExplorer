@@ -26,6 +26,7 @@ namespace PL
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ViewModels.MainWindowVM();
         }
     }
 }

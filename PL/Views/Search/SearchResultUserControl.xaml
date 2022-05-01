@@ -1,15 +1,15 @@
-﻿<UserControl x:Class="PL.Views.SearchResultUserControl"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PL.Views" 
              xmlns:conv="clr-namespace:PL.Converters" 
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:PL.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SearchVM}"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:PL.ViewModels" xmlns:Commands="clr-namespace:PL.Commands" x:Class="PL.Views.SearchResultUserControl"
+             d:DataContext="{d:DesignInstance Type={x:Type viewmodels:SearchVM}}"
              mc:Ignorable="d" >
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
-        <ListBox ItemsSource="{Binding SearchResult}" VerticalContentAlignment="Top" 
-                 Style="{StaticResource MaterialDesignCardsListBox}"
+        <ListBox ItemsSource="{Binding SearchResult}" VerticalContentAlignment="Top"
                  d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListBox.Resources>
                 <ResourceDictionary>
@@ -22,8 +22,13 @@
                     </ResourceDictionary.MergedDictionaries>
                     <conv:FloorTagsConverter x:Key="TagsToStarsPConverter"/>
                     <conv:TagsToFirstConverter x:Key="TagsToFirstConverter"/>
+                    <conv:WhatsappLinkConverter x:Key="WhatsappLinkConverter"/>
                 </ResourceDictionary>
             </ListBox.Resources>
+
+            <ListBox.Style>
+                <StaticResource ResourceKey="MaterialDesignCardsListBox"/>
+            </ListBox.Style>
 
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -50,11 +55,11 @@
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
                                 Margin="0 0 66 -20" Panel.ZIndex="3"
-                                Command="{Binding OpenLinkCommand}" CommandParameter="{Binding Uri, UpdateSourceTrigger=PropertyChanged}">
+                                Command="{Binding DataContext.OpenLinkCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:SearchResultUserControl}}}" CommandParameter="{Binding Uri, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource WhatsappLinkConverter}}">
                                 <materialDesign:PackIcon Kind="ShareVariant" />
                             </Button>
-                            
-                            <Expander Grid.Row="1" Header="{Binding Title}" Style="{StaticResource MaterialDesignExpander}">                                
+
+                            <Expander Grid.Row="1" Header="{Binding Title}" Style="{StaticResource MaterialDesignExpander}">
                                 <StackPanel Margin="08 10 8 4" >
                                     <TextBlock
                                         Style="{StaticResource MaterialDesignHeadline6TextBlock}"

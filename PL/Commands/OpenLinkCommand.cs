@@ -9,10 +9,10 @@ namespace PL.Commands
 {
     public class OpenLinkCommand : CommandBase
     {
-        protected override void OnExecute(object input)
+        protected override void OnExecute(object parameter)
         {
-            string message = input as string;
-            System.Diagnostics.Process.Start("https://wa.me/?text=Recommended for you to see: " + message);
+            string link = parameter as string;
+            System.Diagnostics.Process.Start(link);
         }
 
        

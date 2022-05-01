@@ -5,7 +5,7 @@
                  xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                  xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 xmlns:uc="clr-namespace:PL.Views"
+                 xmlns:uc="clr-namespace:PL.Views" xmlns:viewmodels="clr-namespace:PL.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowVM}"
                  Title="Space Explorer"
                  GlowBrush="{DynamicResource MahApps.Brushes.Accent}"
                  ResizeMode="CanResizeWithGrip"
@@ -17,14 +17,15 @@
             <Button  ToolTip="Open up the GitHub site">
                 <iconPacks:PackIconModern Width="22"
                                   Height="22"
-                                  Kind="ArrowExpand" />
+                                  Kind="New" />
             </Button>
         </mah:WindowCommands>
     </mah:MetroWindow.LeftWindowCommands>
 
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
-            <Button  Content="Source Code">
+            <Button Content="Source Code"
+                    Command="{Binding OpenLinkCommand}" CommandParameter="https://github.com/omcoch/SpaceExplorer">
                 <Button.ContentTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

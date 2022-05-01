@@ -65,8 +65,14 @@ namespace PL.ViewModels
 
         public void GetAsteroids(Asteroid asteroid)
         {
-            Model.GetAsteroids(StartDate, EndDate, asteroid.IsDangerous, asteroid.DiameterInKm).ToList()
-                .ForEach(a => AsteroidResult.Add(a));
+            var result = Model.GetAsteroids(StartDate, EndDate, asteroid.IsDangerous, asteroid.DiameterInKm).ToList();
+            if (result == null || result.Count <= 0)
+                result.Add(new Asteroid()
+                { // default preview for the case of no results
+                    Name = "No Results"
+                });
+            
+            result.ForEach(a => AsteroidResult.Add(a));
         }
 
         public bool ValidateDatesDistance()

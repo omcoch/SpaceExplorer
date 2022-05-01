@@ -47,7 +47,7 @@
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 materialDesign:HintAssist.Hint="Diameter in km">
                 <TextBox.Text>
-                    <Binding Path="DiameterTextBox" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Text" ElementName="DiameterTextBox" UpdateSourceTrigger="LostFocus">
                         <Binding.ValidationRules>
                             <validation:IsDoubleValidationRule ValidatesOnTargetUpdated="True" />
                         </Binding.ValidationRules>

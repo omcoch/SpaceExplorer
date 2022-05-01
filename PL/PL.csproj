@@ -71,6 +71,7 @@
     <Compile Include="Converters\MultiValueToAsteroidConverter.cs" />
     <Compile Include="Converters\FloorTagsConverter.cs" />
     <Compile Include="Converters\TagsToFirstConverter.cs" />
+    <Compile Include="Converters\WhatsappLinkConverter.cs" />
     <Compile Include="Validations\DatesValidationRule .cs" />
     <Compile Include="Validations\IsDoubleValidationRule.cs" />
     <Compile Include="Validations\NotEmptyValidationRule.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="ViewModels\ISearchVM.cs" />
     <Compile Include="ViewModels\IAsteroidVM.cs" />
     <Compile Include="ViewModels\ISuggestionVM.cs" />
+    <Compile Include="ViewModels\MainWindowVM.cs" />
     <Compile Include="ViewModels\SearchVM.cs" />
     <Compile Include="ViewModels\PlanetsVM.cs" />
     <Compile Include="ViewModels\ImageDetailVM.cs" />
@@ -257,9 +259,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\background.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\background.gif" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\LevLogo.jpg" />
