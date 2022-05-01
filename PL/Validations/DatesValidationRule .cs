@@ -13,7 +13,7 @@ namespace PL.Validations
         {
             TimeSpan time = EndDateValue - StartDateValue;
 
-            return EndDateValue > StartDateValue && time.TotalDays > 7
+            return EndDateValue > StartDateValue && time.TotalSeconds <=604800
                 ? new ValidationResult(false, "Distance of 7 days maximum")
                 : ValidationResult.ValidResult;
         }

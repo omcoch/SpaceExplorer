@@ -73,7 +73,7 @@ namespace PL.ViewModels
         public bool ValidateDatesDistance()
         {
             TimeSpan time = EndDate - StartDate;
-            return EndDate > StartDate && time.TotalDays > 7;
+            return EndDate > StartDate && time.TotalSeconds<=604800;
         }
     }
 }
