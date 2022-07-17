@@ -10,7 +10,7 @@ namespace DAL
     public class NasaApi
     {
         private string DateFormat = "yyyy-MM-dd";
-        public string ApiKey = "3c9WFghad2gXj8beUc9TtwjdjRITVH4rFPZ2F5Oe";
+        public string ApiKey = "***";
 
 
         public Media GetDailyImage(DateTime date)
