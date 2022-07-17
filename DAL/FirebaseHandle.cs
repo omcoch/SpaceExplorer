@@ -11,10 +11,10 @@ namespace DAL
 {
     public class FirebaseHandle
     {
-        private static string ApiKey = "AIzaSyCMLZRTm4RBgSb5ch_5022CP2yHJt4whEY";
-        private static string Bucket = "spaceexplorer-f675f.appspot.com";
-        private static string AuthEmail = "csprj@gmail.com";
-        private static string AuthPassword = "123456";
+        private static string ApiKey = "***";
+        private static string Bucket = "***";
+        private static string AuthEmail = "c***";
+        private static string AuthPassword = "***";
 
         public async Task UploadImage(string path, string name)
         {
